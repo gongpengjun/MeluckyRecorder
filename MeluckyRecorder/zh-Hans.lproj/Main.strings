@@ -1,0 +1,60 @@
+
+/* Class = "IBUITextField"; placeholder = "违章人员工号 (例如: 123)"; ObjectID = "5g7-Qd-nBK"; */
+"5g7-Qd-nBK.placeholder" = "违章人员工号 (例如: 123)";
+
+/* Class = "IBUILabel"; text = "操作员登陆"; ObjectID = "9pj-FZ-jVj"; */
+"9pj-FZ-jVj.text" = "操作员登陆";
+
+/* Class = "IBUIButton"; normalTitle = "登陆"; ObjectID = "9z2-p6-Pbg"; */
+"9z2-p6-Pbg.normalTitle" = "登陆";
+
+/* Class = "IBUITableViewController"; title = "违章信息"; ObjectID = "FCe-lQ-nMo"; */
+"FCe-lQ-nMo.title" = "违章信息";
+
+/* Class = "IBUITextField"; placeholder = "用户名 (例如:test)"; ObjectID = "Hg8-Z0-dVI"; */
+"Hg8-Z0-dVI.placeholder" = "用户名 (例如:test)";
+
+/* Class = "IBUITextField"; placeholder = "违章地点 (例如: 机坪内)"; ObjectID = "I4D-vD-NDx"; */
+"I4D-vD-NDx.placeholder" = "违章地点 (例如: 机坪内)";
+
+/* Class = "IBUILabel"; text = "立即上传"; ObjectID = "K2w-4w-lI0"; */
+"K2w-4w-lI0.text" = "立即上传";
+
+/* Class = "IBUITextField"; placeholder = "密码 (例如: 123)"; ObjectID = "RJE-E6-p7O"; */
+"RJE-E6-p7O.placeholder" = "密码 (例如: 123)";
+
+/* Class = "IBUIBarButtonItem"; title = "登陆"; ObjectID = "TCS-OS-M9x"; */
+"TCS-OS-M9x.title" = "登陆";
+
+/* Class = "IBUILabel"; text = "新建违章记录"; ObjectID = "X2d-Fu-hXo"; */
+"X2d-Fu-hXo.text" = "新建违章记录";
+
+/* Class = "IBUIBarButtonItem"; title = "注销"; ObjectID = "gLa-pC-HTW"; */
+"gLa-pC-HTW.title" = "注销";
+
+/* Class = "IBUILabel"; text = "违章条款"; ObjectID = "gcE-wE-BDX"; */
+"gcE-wE-BDX.text" = "违章条款";
+
+/* Class = "IBUILabel"; text = "员工号"; ObjectID = "hAi-WZ-w7q"; */
+"hAi-WZ-w7q.text" = "员工号";
+
+/* Class = "IBUINavigationItem"; title = "新违章记录"; ObjectID = "hMQ-uP-7V6"; */
+"hMQ-uP-7V6.title" = "新违章记录";
+
+/* Class = "IBUILabel"; text = "违章地点"; ObjectID = "kYJ-LJ-CR2"; */
+"kYJ-LJ-CR2.text" = "违章地点";
+
+/* Class = "IBUITextField"; placeholder = "违章条款 (例如: 1002)"; ObjectID = "mNU-HO-D6y"; */
+"mNU-HO-D6y.placeholder" = "违章条款 (例如: 1002)";
+
+/* Class = "IBUILabel"; text = "违章照片"; ObjectID = "r6z-eO-ZTX"; */
+"r6z-eO-ZTX.text" = "违章照片";
+
+/* Class = "IBUIBarButtonItem"; title = "上传"; ObjectID = "u0E-7O-G93"; */
+"u0E-7O-G93.title" = "上传";
+
+/* Class = "IBUILabel"; text = "批量上传"; ObjectID = "uwX-qj-Els"; */
+"uwX-qj-Els.text" = "批量上传";
+
+/* Class = "IBUINavigationItem"; title = "违章记录"; ObjectID = "zeT-1D-GtC"; */
+"zeT-1D-GtC.title" = "违章记录";
