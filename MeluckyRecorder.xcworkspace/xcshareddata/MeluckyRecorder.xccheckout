@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B4540CD0-5684-43A9-91B5-767811C1F58D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MeluckyRecorder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>47346F3E-49D0-42BD-9A03-BEC918FE8D8F</key>
+		<string>https://github.com/gongpengjun/MeluckyRecorder.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MeluckyRecorder.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>47346F3E-49D0-42BD-9A03-BEC918FE8D8F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/gongpengjun/MeluckyRecorder.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>47346F3E-49D0-42BD-9A03-BEC918FE8D8F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>47346F3E-49D0-42BD-9A03-BEC918FE8D8F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MeluckyRecorder</string>
+		</dict>
+	</array>
+</dict>
+</plist>

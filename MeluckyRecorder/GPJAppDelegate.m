@@ -7,12 +7,17 @@
 //
 
 #import "GPJAppDelegate.h"
+#import "Constants.h"
+#import "GPJLoginViewController.h"
+#import "GPJUser.h"
 
 @implementation GPJAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [GPJUser sharedUser];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutHandler:) name:LOGOUT_NOTIFICATION object:nil];
+    [self performSelector:@selector(startLogin) withObject:nil afterDelay:0];
     return YES;
 }
 							
@@ -41,6 +46,31 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Login
+
+- (void)startLogin
+{
+    if(![[GPJUser sharedUser] isLoggedIn] ){
+        [self showLoginViewAnimated:NO];
+    }
+}
+
+- (void)showLoginViewAnimated:(BOOL)animated
+{
+#if 0
+    UINavigationController* navController = (UINavigationController*)self.window.rootViewController;
+    [navController.viewControllers[0] performSegueWithIdentifier:@"ShowLoginView" sender:self];
+#else
+    GPJLoginViewController *loginVC = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"GPJLoginViewController"];
+    [self.window.rootViewController presentViewController:loginVC animated:animated completion:nil];
+#endif
+}
+
+- (void)logoutHandler:(NSNotification *)notification {
+    [[GPJUser sharedUser] logout];
+    [self showLoginViewAnimated:YES];
 }
 
 @end

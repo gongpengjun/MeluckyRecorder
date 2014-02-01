@@ -7,9 +7,12 @@
 //
 
 #import "GPJTableViewController.h"
+#import "Constants.h"
+#import "GPJUser.h"
 
-@interface GPJTableViewController ()
-
+@interface GPJTableViewController () <UIAlertViewDelegate>
+@property (nonatomic, strong) UIBarButtonItem *loginBtnItem;
+@property (nonatomic, strong) UIBarButtonItem *logoutBtnItem;
 @end
 
 @implementation GPJTableViewController
@@ -23,21 +26,32 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.loginBtnItem = self.navigationItem.rightBarButtonItem;
+    self.logoutBtnItem = self.navigationItem.leftBarButtonItem;
+    self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([[GPJUser sharedUser] isLoggedIn])
+    {
+        self.navigationItem.rightBarButtonItem = self.logoutBtnItem;
+        self.title = [NSString stringWithFormat:@"%@ / %@", [[GPJUser sharedUser] userid], [[GPJUser sharedUser] username]];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = self.loginBtnItem;
+    }
 }
 
 #pragma mark - Table view data source
@@ -114,5 +128,18 @@
 }
 
  */
+
+- (IBAction)logoutAction:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"确定要注销吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    if(buttonIndex == alertView.cancelButtonIndex)
+        return;
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];
+}
 
 @end

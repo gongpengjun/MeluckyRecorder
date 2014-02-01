@@ -24,9 +24,14 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="违章记录" id="zeT-1D-GtC">
+                        <barButtonItem key="leftBarButtonItem" title="注销" id="gLa-pC-HTW">
+                            <connections>
+                                <action selector="logoutAction:" destination="6JW-F4-FNe" id="wuO-oe-c14"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="登陆" id="TCS-OS-M9x">
                             <connections>
-                                <segue destination="2wC-RE-WIa" kind="modal" id="vJK-np-hPH"/>
+                                <segue destination="2wC-RE-WIa" kind="modal" identifier="ShowLoginView" id="vJK-np-hPH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -38,7 +43,7 @@
         <!--Login View Controller-->
         <scene sceneID="BgE-0w-PkF">
             <objects>
-                <viewController id="2wC-RE-WIa" customClass="GPJLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GPJLoginViewController" id="2wC-RE-WIa" customClass="GPJLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tfk-vo-bFx"/>
                         <viewControllerLayoutGuide type="bottom" id="ZpP-5K-Jsz"/>
