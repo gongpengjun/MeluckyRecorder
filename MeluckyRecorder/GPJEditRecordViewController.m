@@ -63,7 +63,7 @@
     }
     else if([textField isEqual:self.txtViolatePlace])
     {// Next -> violate Photo
-        [self pickPhotoAction:self.txtViolatePlace];
+        [self pickPhotoAction:self.imageView];
     }
     else
     {// Next -> Go - Upload
