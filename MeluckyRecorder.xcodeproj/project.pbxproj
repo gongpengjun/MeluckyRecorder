@@ -32,6 +32,10 @@
 		C4203BFE189CAC8E00C8711A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BFD189CAC8E00C8711A /* Constants.m */; };
 		C4203BFF189CAC8E00C8711A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BFD189CAC8E00C8711A /* Constants.m */; };
 		C45D71BE189CB0A1007D3DD2 /* GPJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C45D71BD189CB0A1007D3DD2 /* GPJUser.m */; };
+		C4E54786189CED190092C122 /* GPJEditRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E54785189CED190092C122 /* GPJEditRecordViewController.m */; };
+		C4E5478E189CF1820092C122 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E54789189CF1820092C122 /* UIImage+Alpha.m */; };
+		C4E5478F189CF1820092C122 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5478B189CF1820092C122 /* UIImage+Resize.m */; };
+		C4E54790189CF1820092C122 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5478D189CF1820092C122 /* UIImage+RoundedCorner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,14 @@
 		C4203BFD189CAC8E00C8711A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C45D71BC189CB0A1007D3DD2 /* GPJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJUser.h; sourceTree = "<group>"; };
 		C45D71BD189CB0A1007D3DD2 /* GPJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJUser.m; sourceTree = "<group>"; };
+		C4E54784189CED190092C122 /* GPJEditRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJEditRecordViewController.h; sourceTree = "<group>"; };
+		C4E54785189CED190092C122 /* GPJEditRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJEditRecordViewController.m; sourceTree = "<group>"; };
+		C4E54788189CF1820092C122 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		C4E54789189CF1820092C122 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		C4E5478A189CF1820092C122 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		C4E5478B189CF1820092C122 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		C4E5478C189CF1820092C122 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		C4E5478D189CF1820092C122 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,10 +158,13 @@
 				C4203BF1189C885300C8711A /* GPJTableViewController.m */,
 				C4203BF4189C987500C8711A /* GPJLoginViewController.h */,
 				C4203BF5189C987500C8711A /* GPJLoginViewController.m */,
+				C4E54784189CED190092C122 /* GPJEditRecordViewController.h */,
+				C4E54785189CED190092C122 /* GPJEditRecordViewController.m */,
 				C45D71BC189CB0A1007D3DD2 /* GPJUser.h */,
 				C45D71BD189CB0A1007D3DD2 /* GPJUser.m */,
 				C4203BF8189CA92500C8711A /* CookieManager.h */,
 				C4203BF9189CA92500C8711A /* CookieManager.m */,
+				C4E54787189CF1820092C122 /* UIImage+Resize */,
 				C4203BCC189C7A8000C8711A /* Images.xcassets */,
 				C4203BE9189C867500C8711A /* types.json */,
 				C4203BBB189C7A8000C8711A /* Supporting Files */,
@@ -184,6 +199,19 @@
 				C4203BDC189C7A8000C8711A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4E54787189CF1820092C122 /* UIImage+Resize */ = {
+			isa = PBXGroup;
+			children = (
+				C4E54788189CF1820092C122 /* UIImage+Alpha.h */,
+				C4E54789189CF1820092C122 /* UIImage+Alpha.m */,
+				C4E5478A189CF1820092C122 /* UIImage+Resize.h */,
+				C4E5478B189CF1820092C122 /* UIImage+Resize.m */,
+				C4E5478C189CF1820092C122 /* UIImage+RoundedCorner.h */,
+				C4E5478D189CF1820092C122 /* UIImage+RoundedCorner.m */,
+			);
+			path = "UIImage+Resize";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +351,15 @@
 			files = (
 				C4203BF6189C987500C8711A /* GPJLoginViewController.m in Sources */,
 				C4203BC5189C7A8000C8711A /* GPJAppDelegate.m in Sources */,
+				C4E5478E189CF1820092C122 /* UIImage+Alpha.m in Sources */,
 				C4203BC1189C7A8000C8711A /* main.m in Sources */,
 				C45D71BE189CB0A1007D3DD2 /* GPJUser.m in Sources */,
+				C4E54790189CF1820092C122 /* UIImage+RoundedCorner.m in Sources */,
 				C4203BF2189C885300C8711A /* GPJTableViewController.m in Sources */,
+				C4E54786189CED190092C122 /* GPJEditRecordViewController.m in Sources */,
 				C4203BFA189CA92500C8711A /* CookieManager.m in Sources */,
 				C4203BFE189CAC8E00C8711A /* Constants.m in Sources */,
+				C4E5478F189CF1820092C122 /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
