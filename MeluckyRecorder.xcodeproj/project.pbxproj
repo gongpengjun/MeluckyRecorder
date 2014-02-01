@@ -23,8 +23,8 @@
 		C4203BE0189C7A8000C8711A /* MeluckyRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BDF189C7A8000C8711A /* MeluckyRecorderTests.m */; };
 		C4203BEA189C867500C8711A /* types.json in Resources */ = {isa = PBXBuildFile; fileRef = C4203BE9189C867500C8711A /* types.json */; };
 		C4203BEB189C867500C8711A /* types.json in Resources */ = {isa = PBXBuildFile; fileRef = C4203BE9189C867500C8711A /* types.json */; };
-		C4203BF2189C885300C8711A /* GPJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJTableViewController.m */; };
-		C4203BF3189C885300C8711A /* GPJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJTableViewController.m */; };
+		C4203BF2189C885300C8711A /* GPJRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJRootTableViewController.m */; };
+		C4203BF3189C885300C8711A /* GPJRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJRootTableViewController.m */; };
 		C4203BF6189C987500C8711A /* GPJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF5189C987500C8711A /* GPJLoginViewController.m */; };
 		C4203BF7189C987500C8711A /* GPJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF5189C987500C8711A /* GPJLoginViewController.m */; };
 		C4203BFA189CA92500C8711A /* CookieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF9189CA92500C8711A /* CookieManager.m */; };
@@ -69,8 +69,8 @@
 		C4203BDD189C7A8000C8711A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C4203BDF189C7A8000C8711A /* MeluckyRecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeluckyRecorderTests.m; sourceTree = "<group>"; };
 		C4203BE9189C867500C8711A /* types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = types.json; sourceTree = "<group>"; };
-		C4203BF0189C885300C8711A /* GPJTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJTableViewController.h; sourceTree = "<group>"; };
-		C4203BF1189C885300C8711A /* GPJTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJTableViewController.m; sourceTree = "<group>"; };
+		C4203BF0189C885300C8711A /* GPJRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJRootTableViewController.h; sourceTree = "<group>"; };
+		C4203BF1189C885300C8711A /* GPJRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJRootTableViewController.m; sourceTree = "<group>"; };
 		C4203BF4189C987500C8711A /* GPJLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJLoginViewController.h; sourceTree = "<group>"; };
 		C4203BF5189C987500C8711A /* GPJLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJLoginViewController.m; sourceTree = "<group>"; };
 		C4203BF8189CA92500C8711A /* CookieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieManager.h; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 				C4203BC3189C7A8000C8711A /* GPJAppDelegate.h */,
 				C4203BC4189C7A8000C8711A /* GPJAppDelegate.m */,
 				C4203BC6189C7A8000C8711A /* Main.storyboard */,
-				C4203BF0189C885300C8711A /* GPJTableViewController.h */,
-				C4203BF1189C885300C8711A /* GPJTableViewController.m */,
+				C4203BF0189C885300C8711A /* GPJRootTableViewController.h */,
+				C4203BF1189C885300C8711A /* GPJRootTableViewController.m */,
 				C4203BF4189C987500C8711A /* GPJLoginViewController.h */,
 				C4203BF5189C987500C8711A /* GPJLoginViewController.m */,
 				C4E54784189CED190092C122 /* GPJEditRecordViewController.h */,
@@ -355,7 +355,7 @@
 				C4203BC1189C7A8000C8711A /* main.m in Sources */,
 				C45D71BE189CB0A1007D3DD2 /* GPJUser.m in Sources */,
 				C4E54790189CF1820092C122 /* UIImage+RoundedCorner.m in Sources */,
-				C4203BF2189C885300C8711A /* GPJTableViewController.m in Sources */,
+				C4203BF2189C885300C8711A /* GPJRootTableViewController.m in Sources */,
 				C4E54786189CED190092C122 /* GPJEditRecordViewController.m in Sources */,
 				C4203BFA189CA92500C8711A /* CookieManager.m in Sources */,
 				C4203BFE189CAC8E00C8711A /* Constants.m in Sources */,
@@ -370,7 +370,7 @@
 				C4203BFF189CAC8E00C8711A /* Constants.m in Sources */,
 				C4203BF7189C987500C8711A /* GPJLoginViewController.m in Sources */,
 				C4203BE0189C7A8000C8711A /* MeluckyRecorderTests.m in Sources */,
-				C4203BF3189C885300C8711A /* GPJTableViewController.m in Sources */,
+				C4203BF3189C885300C8711A /* GPJRootTableViewController.m in Sources */,
 				C4203BFB189CA92500C8711A /* CookieManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

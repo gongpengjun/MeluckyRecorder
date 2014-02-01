@@ -6,16 +6,16 @@
 //  Copyright (c) 2014年 www.GongPengjun.com. All rights reserved.
 //
 
-#import "GPJTableViewController.h"
+#import "GPJRootTableViewController.h"
 #import "Constants.h"
 #import "GPJUser.h"
 
-@interface GPJTableViewController () <UIAlertViewDelegate>
+@interface GPJRootTableViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong) UIBarButtonItem *loginBtnItem;
 @property (nonatomic, strong) UIBarButtonItem *logoutBtnItem;
 @end
 
-@implementation GPJTableViewController
+@implementation GPJRootTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

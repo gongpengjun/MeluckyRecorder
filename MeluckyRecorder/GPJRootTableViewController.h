@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPJTableViewController : UITableViewController
+@interface GPJRootTableViewController : UITableViewController
 
 @end
