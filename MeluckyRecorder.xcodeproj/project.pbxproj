@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C4203BB5189C7A8000C8711A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BB4189C7A8000C8711A /* Foundation.framework */; };
+		C4203BB7189C7A8000C8711A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BB6189C7A8000C8711A /* CoreGraphics.framework */; };
+		C4203BB9189C7A8000C8711A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BB8189C7A8000C8711A /* UIKit.framework */; };
+		C4203BBF189C7A8000C8711A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4203BBD189C7A8000C8711A /* InfoPlist.strings */; };
+		C4203BC1189C7A8000C8711A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BC0189C7A8000C8711A /* main.m */; };
+		C4203BC5189C7A8000C8711A /* GPJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BC4189C7A8000C8711A /* GPJAppDelegate.m */; };
+		C4203BC8189C7A8000C8711A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4203BC6189C7A8000C8711A /* Main.storyboard */; };
+		C4203BCD189C7A8000C8711A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4203BCC189C7A8000C8711A /* Images.xcassets */; };
+		C4203BD4189C7A8000C8711A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BD3189C7A8000C8711A /* XCTest.framework */; };
+		C4203BD5189C7A8000C8711A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BB4189C7A8000C8711A /* Foundation.framework */; };
+		C4203BD6189C7A8000C8711A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4203BB8189C7A8000C8711A /* UIKit.framework */; };
+		C4203BDE189C7A8000C8711A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4203BDC189C7A8000C8711A /* InfoPlist.strings */; };
+		C4203BE0189C7A8000C8711A /* MeluckyRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BDF189C7A8000C8711A /* MeluckyRecorderTests.m */; };
+		C4203BEA189C867500C8711A /* types.json in Resources */ = {isa = PBXBuildFile; fileRef = C4203BE9189C867500C8711A /* types.json */; };
+		C4203BEB189C867500C8711A /* types.json in Resources */ = {isa = PBXBuildFile; fileRef = C4203BE9189C867500C8711A /* types.json */; };
+		C4203BF2189C885300C8711A /* GPJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJTableViewController.m */; };
+		C4203BF3189C885300C8711A /* GPJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF1189C885300C8711A /* GPJTableViewController.m */; };
+		C4203BF6189C987500C8711A /* GPJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF5189C987500C8711A /* GPJLoginViewController.m */; };
+		C4203BF7189C987500C8711A /* GPJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4203BF5189C987500C8711A /* GPJLoginViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C4203BD7189C7A8000C8711A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4203BA9189C7A8000C8711A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4203BB0189C7A8000C8711A;
+			remoteInfo = MeluckyRecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C4203BB1189C7A8000C8711A /* MeluckyRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeluckyRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4203BB4189C7A8000C8711A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C4203BB6189C7A8000C8711A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C4203BB8189C7A8000C8711A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C4203BBC189C7A8000C8711A /* MeluckyRecorder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeluckyRecorder-Info.plist"; sourceTree = "<group>"; };
+		C4203BBE189C7A8000C8711A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4203BC0189C7A8000C8711A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4203BC2189C7A8000C8711A /* MeluckyRecorder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeluckyRecorder-Prefix.pch"; sourceTree = "<group>"; };
+		C4203BC3189C7A8000C8711A /* GPJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPJAppDelegate.h; sourceTree = "<group>"; };
+		C4203BC4189C7A8000C8711A /* GPJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPJAppDelegate.m; sourceTree = "<group>"; };
+		C4203BC7189C7A8000C8711A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C4203BCC189C7A8000C8711A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C4203BD2189C7A8000C8711A /* MeluckyRecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeluckyRecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4203BD3189C7A8000C8711A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C4203BDB189C7A8000C8711A /* MeluckyRecorderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeluckyRecorderTests-Info.plist"; sourceTree = "<group>"; };
+		C4203BDD189C7A8000C8711A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4203BDF189C7A8000C8711A /* MeluckyRecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeluckyRecorderTests.m; sourceTree = "<group>"; };
+		C4203BE9189C867500C8711A /* types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = types.json; sourceTree = "<group>"; };
+		C4203BF0189C885300C8711A /* GPJTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJTableViewController.h; sourceTree = "<group>"; };
+		C4203BF1189C885300C8711A /* GPJTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJTableViewController.m; sourceTree = "<group>"; };
+		C4203BF4189C987500C8711A /* GPJLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJLoginViewController.h; sourceTree = "<group>"; };
+		C4203BF5189C987500C8711A /* GPJLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJLoginViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4203BAE189C7A8000C8711A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BB7189C7A8000C8711A /* CoreGraphics.framework in Frameworks */,
+				C4203BB9189C7A8000C8711A /* UIKit.framework in Frameworks */,
+				C4203BB5189C7A8000C8711A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4203BCF189C7A8000C8711A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BD4189C7A8000C8711A /* XCTest.framework in Frameworks */,
+				C4203BD6189C7A8000C8711A /* UIKit.framework in Frameworks */,
+				C4203BD5189C7A8000C8711A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4203BA8189C7A8000C8711A = {
+			isa = PBXGroup;
+			children = (
+				C4203BBA189C7A8000C8711A /* MeluckyRecorder */,
+				C4203BD9189C7A8000C8711A /* MeluckyRecorderTests */,
+				C4203BB3189C7A8000C8711A /* Frameworks */,
+				C4203BB2189C7A8000C8711A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4203BB2189C7A8000C8711A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BB1189C7A8000C8711A /* MeluckyRecorder.app */,
+				C4203BD2189C7A8000C8711A /* MeluckyRecorderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4203BB3189C7A8000C8711A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BB4189C7A8000C8711A /* Foundation.framework */,
+				C4203BB6189C7A8000C8711A /* CoreGraphics.framework */,
+				C4203BB8189C7A8000C8711A /* UIKit.framework */,
+				C4203BD3189C7A8000C8711A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4203BBA189C7A8000C8711A /* MeluckyRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BC3189C7A8000C8711A /* GPJAppDelegate.h */,
+				C4203BC4189C7A8000C8711A /* GPJAppDelegate.m */,
+				C4203BC6189C7A8000C8711A /* Main.storyboard */,
+				C4203BF4189C987500C8711A /* GPJLoginViewController.h */,
+				C4203BF5189C987500C8711A /* GPJLoginViewController.m */,
+				C4203BF0189C885300C8711A /* GPJTableViewController.h */,
+				C4203BF1189C885300C8711A /* GPJTableViewController.m */,
+				C4203BCC189C7A8000C8711A /* Images.xcassets */,
+				C4203BE9189C867500C8711A /* types.json */,
+				C4203BBB189C7A8000C8711A /* Supporting Files */,
+			);
+			path = MeluckyRecorder;
+			sourceTree = "<group>";
+		};
+		C4203BBB189C7A8000C8711A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BBC189C7A8000C8711A /* MeluckyRecorder-Info.plist */,
+				C4203BBD189C7A8000C8711A /* InfoPlist.strings */,
+				C4203BC0189C7A8000C8711A /* main.m */,
+				C4203BC2189C7A8000C8711A /* MeluckyRecorder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4203BD9189C7A8000C8711A /* MeluckyRecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BDF189C7A8000C8711A /* MeluckyRecorderTests.m */,
+				C4203BDA189C7A8000C8711A /* Supporting Files */,
+			);
+			path = MeluckyRecorderTests;
+			sourceTree = "<group>";
+		};
+		C4203BDA189C7A8000C8711A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BDB189C7A8000C8711A /* MeluckyRecorderTests-Info.plist */,
+				C4203BDC189C7A8000C8711A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C4203BB0189C7A8000C8711A /* MeluckyRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4203BE3189C7A8000C8711A /* Build configuration list for PBXNativeTarget "MeluckyRecorder" */;
+			buildPhases = (
+				C4203BAD189C7A8000C8711A /* Sources */,
+				C4203BAE189C7A8000C8711A /* Frameworks */,
+				C4203BAF189C7A8000C8711A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeluckyRecorder;
+			productName = MeluckyRecorder;
+			productReference = C4203BB1189C7A8000C8711A /* MeluckyRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C4203BD1189C7A8000C8711A /* MeluckyRecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4203BE6189C7A8000C8711A /* Build configuration list for PBXNativeTarget "MeluckyRecorderTests" */;
+			buildPhases = (
+				C4203BCE189C7A8000C8711A /* Sources */,
+				C4203BCF189C7A8000C8711A /* Frameworks */,
+				C4203BD0189C7A8000C8711A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C4203BD8189C7A8000C8711A /* PBXTargetDependency */,
+			);
+			name = MeluckyRecorderTests;
+			productName = MeluckyRecorderTests;
+			productReference = C4203BD2189C7A8000C8711A /* MeluckyRecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4203BA9189C7A8000C8711A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GPJ;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = www.GongPengjun.com;
+				TargetAttributes = {
+					C4203BD1189C7A8000C8711A = {
+						TestTargetID = C4203BB0189C7A8000C8711A;
+					};
+				};
+			};
+			buildConfigurationList = C4203BAC189C7A8000C8711A /* Build configuration list for PBXProject "MeluckyRecorder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C4203BA8189C7A8000C8711A;
+			productRefGroup = C4203BB2189C7A8000C8711A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4203BB0189C7A8000C8711A /* MeluckyRecorder */,
+				C4203BD1189C7A8000C8711A /* MeluckyRecorderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C4203BAF189C7A8000C8711A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BCD189C7A8000C8711A /* Images.xcassets in Resources */,
+				C4203BBF189C7A8000C8711A /* InfoPlist.strings in Resources */,
+				C4203BC8189C7A8000C8711A /* Main.storyboard in Resources */,
+				C4203BEA189C867500C8711A /* types.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4203BD0189C7A8000C8711A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BDE189C7A8000C8711A /* InfoPlist.strings in Resources */,
+				C4203BEB189C867500C8711A /* types.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4203BAD189C7A8000C8711A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BF6189C987500C8711A /* GPJLoginViewController.m in Sources */,
+				C4203BC5189C7A8000C8711A /* GPJAppDelegate.m in Sources */,
+				C4203BC1189C7A8000C8711A /* main.m in Sources */,
+				C4203BF2189C885300C8711A /* GPJTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4203BCE189C7A8000C8711A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4203BF7189C987500C8711A /* GPJLoginViewController.m in Sources */,
+				C4203BE0189C7A8000C8711A /* MeluckyRecorderTests.m in Sources */,
+				C4203BF3189C885300C8711A /* GPJTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C4203BD8189C7A8000C8711A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4203BB0189C7A8000C8711A /* MeluckyRecorder */;
+			targetProxy = C4203BD7189C7A8000C8711A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C4203BBD189C7A8000C8711A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4203BBE189C7A8000C8711A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C4203BC6189C7A8000C8711A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4203BC7189C7A8000C8711A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C4203BDC189C7A8000C8711A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4203BDD189C7A8000C8711A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C4203BE1189C7A8000C8711A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C4203BE2189C7A8000C8711A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C4203BE4189C7A8000C8711A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeluckyRecorder/MeluckyRecorder-Prefix.pch";
+				INFOPLIST_FILE = "MeluckyRecorder/MeluckyRecorder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C4203BE5189C7A8000C8711A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeluckyRecorder/MeluckyRecorder-Prefix.pch";
+				INFOPLIST_FILE = "MeluckyRecorder/MeluckyRecorder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C4203BE7189C7A8000C8711A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeluckyRecorder.app/MeluckyRecorder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeluckyRecorder/MeluckyRecorder-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MeluckyRecorderTests/MeluckyRecorderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C4203BE8189C7A8000C8711A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeluckyRecorder.app/MeluckyRecorder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeluckyRecorder/MeluckyRecorder-Prefix.pch";
+				INFOPLIST_FILE = "MeluckyRecorderTests/MeluckyRecorderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4203BAC189C7A8000C8711A /* Build configuration list for PBXProject "MeluckyRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4203BE1189C7A8000C8711A /* Debug */,
+				C4203BE2189C7A8000C8711A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4203BE3189C7A8000C8711A /* Build configuration list for PBXNativeTarget "MeluckyRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4203BE4189C7A8000C8711A /* Debug */,
+				C4203BE5189C7A8000C8711A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C4203BE6189C7A8000C8711A /* Build configuration list for PBXNativeTarget "MeluckyRecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4203BE7189C7A8000C8711A /* Debug */,
+				C4203BE8189C7A8000C8711A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4203BA9189C7A8000C8711A /* Project object */;
+}

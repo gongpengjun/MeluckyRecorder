@@ -1,0 +1,103 @@
+{
+    "version": "0",
+    "types": [
+        {
+            "ViolateCategoryID": "1",
+            "ViolateCategoryName": "人员违章",
+            "ViolateTypeNum": "101",
+            "ViolateTypeName": "机坪内工作未在明显位置佩戴通行证件的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "1",
+            "ViolateCategoryName": "人员违章",
+            "ViolateTypeNum": "102",
+            "ViolateTypeName": "破坏机坪秩序，影响航空器机坪运行的",
+            "ViolateScores": "6"
+        },
+        {
+            "ViolateCategoryID": "2",
+            "ViolateCategoryName": "车辆违章",
+            "ViolateTypeNum": "201",
+            "ViolateTypeName": "酒后驾驶机动车辆的",
+            "ViolateScores": "6"
+        },
+        {
+            "ViolateCategoryID": "2",
+            "ViolateCategoryName": "车辆违章",
+            "ViolateTypeNum": "202",
+            "ViolateTypeName": "与航空器发生碰撞的",
+            "ViolateScores": "12"
+        },
+        {
+            "ViolateCategoryID": "3",
+            "ViolateCategoryName": "设施设备违章",
+            "ViolateTypeNum": "301",
+            "ViolateTypeName": "未按指定位置摆放的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "3",
+            "ViolateCategoryName": "设施设备违章",
+            "ViolateTypeNum": "302",
+            "ViolateTypeName": "机具设备摆放于消防器材前和安全通道内的",
+            "ViolateScores": "6"
+        },
+        {
+            "ViolateCategoryID": "4",
+            "ViolateCategoryName": "航空器运行违章",
+            "ViolateTypeNum": "401",
+            "ViolateTypeName": "未申请机位，进入机坪的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "4",
+            "ViolateCategoryName": "航空器运行违章",
+            "ViolateTypeNum": "402",
+            "ViolateTypeName": "试车时未设置专人警戒的",
+            "ViolateScores": "6"
+        },
+        {
+            "ViolateCategoryID": "5",
+            "ViolateCategoryName": "航空器加油违章",
+            "ViolateTypeNum": "501",
+            "ViolateTypeName": "机场上空有雷电活动时，不听指令，为航空器进行加油作业的。",
+            "ViolateScores": "6"
+        },
+        {
+            "ViolateCategoryID": "5",
+            "ViolateCategoryName": "航空器加油违章",
+            "ViolateTypeNum": "502",
+            "ViolateTypeName": "能见度不到50米为航空器加油作业的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "6",
+            "ViolateCategoryName": "航空器牵引违章",
+            "ViolateTypeNum": "601",
+            "ViolateTypeName": "牵引人员没有岗位资格证件就进行牵引作业的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "6",
+            "ViolateCategoryName": "航空器牵引违章",
+            "ViolateTypeNum": "602",
+            "ViolateTypeName": "牵引速度及转弯角度超过本规定许可的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "7",
+            "ViolateCategoryName": "机坪破坏环境违章",
+            "ViolateTypeNum": "301",
+            "ViolateTypeName": "在机坪存放，向机坪倾倒、丢弃垃圾或其它废弃物品的",
+            "ViolateScores": "3"
+        },
+        {
+            "ViolateCategoryID": "7",
+            "ViolateCategoryName": "机坪破坏环境违章",
+            "ViolateTypeNum": "302",
+            "ViolateTypeName": "排放或溢漏汽油、航空煤油、润滑油、液压油等油料到机坪上的。",
+            "ViolateScores": "3"
+        }
+    ]
+}
