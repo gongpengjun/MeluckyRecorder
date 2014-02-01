@@ -46,7 +46,7 @@
     if([[GPJUser sharedUser] isLoggedIn])
     {
         self.navigationItem.rightBarButtonItem = self.logoutBtnItem;
-        self.title = [NSString stringWithFormat:@"%@ / %@", [[GPJUser sharedUser] userid], [[GPJUser sharedUser] username]];
+        self.title = [NSString stringWithFormat:@"%@ (%@)", [[GPJUser sharedUser] username], [[GPJUser sharedUser] userid]];
     }
     else
     {
