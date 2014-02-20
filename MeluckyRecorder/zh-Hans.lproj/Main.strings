@@ -50,8 +50,8 @@
 /* Class = "IBUILabel"; text = "违章照片"; ObjectID = "r6z-eO-ZTX"; */
 "r6z-eO-ZTX.text" = "违章照片";
 
-/* Class = "IBUIBarButtonItem"; title = "上传"; ObjectID = "u0E-7O-G93"; */
-"u0E-7O-G93.title" = "上传";
+/* Class = "IBUIBarButtonItem"; title = "保存"; ObjectID = "u0E-7O-G93"; */
+"u0E-7O-G93.title" = "保存";
 
 /* Class = "IBUILabel"; text = "批量上传"; ObjectID = "uwX-qj-Els"; */
 "uwX-qj-Els.text" = "批量上传";

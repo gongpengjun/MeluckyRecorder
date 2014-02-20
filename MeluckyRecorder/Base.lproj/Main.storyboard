@@ -260,9 +260,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="新违章记录" id="hMQ-uP-7V6">
-                        <barButtonItem key="rightBarButtonItem" title="上传" id="u0E-7O-G93">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="u0E-7O-G93">
                             <connections>
-                                <action selector="uploadAction:" destination="FCe-lQ-nMo" id="uHQ-u1-3IN"/>
+                                <action selector="saveAction:" destination="FCe-lQ-nMo" id="qUJ-qU-8Bu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

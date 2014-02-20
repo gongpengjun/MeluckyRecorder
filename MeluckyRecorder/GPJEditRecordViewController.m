@@ -156,7 +156,11 @@
     return retImage;
 }
 
-#pragma mark - Upload
+#pragma mark - Actions
+
+- (IBAction)saveAction:(id)sender {
+    NSLog(@"%s,%d",__FUNCTION__,__LINE__);
+}
 
 - (IBAction)uploadAction:(id)sender
 {
