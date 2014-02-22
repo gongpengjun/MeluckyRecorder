@@ -168,7 +168,7 @@
         return;
     }
     
-    GPJRecord* record = [self recordFromInputFields];
+    GPJRecord* record = [self constructRecordFromInputFields];
     
     if(![record isValidForSave])
     {
@@ -187,7 +187,7 @@
         return;
     }
     
-    GPJRecord* record = [self recordFromInputFields];
+    GPJRecord* record = [self constructRecordFromInputFields];
     
     if(![record isValidForUpload])
     {
@@ -198,9 +198,9 @@
     [self doUploadRecord:record];
 }
 
-#pragma mark - Internal action implementation
+#pragma mark - action implementation
 
-- (GPJRecord*)recordFromInputFields
+- (GPJRecord*)constructRecordFromInputFields
 {
     GPJRecord* record = [[GPJRecord alloc] init];
     record.uuid = [[NSUUID UUID] UUIDString];
@@ -213,12 +213,27 @@
 
 - (void)doSaveRecord:(GPJRecord*)record
 {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.dimBackground = YES;
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
     [manager saveRecord:record
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    
+                success:^{
+                    //NSLog(@"%s,%d %@ SUCCEED",__FUNCTION__,__LINE__,record.uuid);
+                    hud.labelText = @"保存成功";
+                    hud.completionBlock = ^() {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    };
+                    hud.mode = MBProgressHUDModeText;
+                    hud.margin = 10.f;
+                    hud.removeFromSuperViewOnHide = YES;
+                    [hud hide:YES afterDelay:1];
+                } failure:^(NSError *error) {
+                    //NSLog(@"%s,%d %@ FAILED: %@",__FUNCTION__,__LINE__,record.uuid,error);
+                    hud.mode = MBProgressHUDModeText;
+                    hud.labelText = [error localizedDescription];
+                    hud.margin = 10.f;
+                    hud.removeFromSuperViewOnHide = YES;
+                    [hud hide:YES afterDelay:1];
                 }];
 }
 
@@ -229,7 +244,7 @@
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
     [manager uploadRecord:record
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+                      //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
                       // Configure for text only and offset down
                       if([responseObject objectForKey:@"error"]) {
                           hud.completionBlock = nil;
@@ -246,7 +261,7 @@
                       hud.removeFromSuperViewOnHide = YES;
                       [hud hide:YES afterDelay:1];
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+                      //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
                       hud.mode = MBProgressHUDModeText;
                       hud.labelText = [error localizedDescription];
                       hud.margin = 10.f;

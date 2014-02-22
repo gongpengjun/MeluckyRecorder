@@ -14,7 +14,7 @@
 @property (nonatomic, retain) NSString *typeid;
 @property (nonatomic, retain) NSString *place;
 @property (nonatomic, retain) UIImage  *image;
-@property (nonatomic, retain) UIImage  *imageName;
+@property (nonatomic, retain) NSString *imageName;
 
 - (BOOL)isValidForSave;
 - (BOOL)isValidForUpload;

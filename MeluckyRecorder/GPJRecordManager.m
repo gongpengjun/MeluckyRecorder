@@ -48,23 +48,86 @@
     return [self folderPathOfRecordUUID:recordUUID createIfNotExist:NO];
 }
 
-- (NSString*)folderPathOfRecordUUID:(NSString*)recordUUID createIfNotExist:(BOOL)create
+- (NSString*)folderPathOfRecordUUID:(NSString*)uuid createIfNotExist:(BOOL)create
 {
-    NSParameterAssert(recordUUID);
-    NSString* path = [self.basePath stringByAppendingPathComponent:recordUUID];
+    NSParameterAssert(uuid);
+    NSError* error = nil;
+    NSString* path = [self.basePath stringByAppendingPathComponent:uuid];
     if(create && ![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        if([[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
+            NSLog(@"%s,%d %@ SUCCEED",__FUNCTION__,__LINE__,uuid);
+        } else {
+            NSLog(@"%s,%d %@ FAILED: %@",__FUNCTION__,__LINE__,uuid,error);
+        }
     }
     return path;
 }
 
 - (void)saveRecord:(GPJRecord*)record
-           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+           success:(void (^)())success
+           failure:(void (^)(NSError *error))failure
 {
     NSString* uuid = record.uuid;
-    NSString* path = [self folderPathOfRecordUUID:uuid createIfNotExist:YES];
-    NSLog(@"uuid: %@ path: %@",uuid,path);
+    NSString* path = [self folderPathOfRecordUUID:uuid createIfNotExist:NO];
+    //NSLog(@"uuid: %@ path: %@",uuid,path);
+    
+    if(!record.imageName)
+        record.imageName = @"photo1.jpg";
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary* dict = @{
+                               @"uuid"       : record.uuid,
+                               @"employeeid" : record.employeeid,
+                               @"typeid"     : record.typeid,
+                               @"place"      : record.place,
+                               @"imageName"  : record.imageName
+                               };
+        UIImage* photo1 = record.image;
+        
+        NSData* data = nil;
+        NSError* error = nil;
+        
+        if(![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
+            goto END;
+        }
+        
+        // save image to photo1.jpg
+        data = UIImageJPEGRepresentation(photo1, 1);
+        if(![data writeToFile:[path stringByAppendingPathComponent:record.imageName] atomically:YES]) {
+            error = [NSError errorWithDomain:@"GPJError" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"save 'photo1.jpg' failed" }];
+            goto END;
+        }
+        
+        // save info to record.json
+        data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+        if(![data writeToFile:[path stringByAppendingPathComponent:@"record.json"] atomically:YES]) {
+            error = [NSError errorWithDomain:@"GPJError" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"save info failed" }];
+            failure(error);
+            goto END;
+        }
+        
+    END:
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(error) {
+                failure(error);
+            } else {
+                success();
+            }
+        });
+    });
+}
+
+- (void)deleteRecordFromDisk:(GPJRecord*)record
+{
+    NSString* uuid = record.uuid;
+    NSString* path = [self folderPathOfRecordUUID:uuid createIfNotExist:NO];
+    if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError* error = nil;
+        if([[NSFileManager defaultManager] removeItemAtPath:path error:&error]) {
+            NSLog(@"%s,%d %@ SUCCEED",__FUNCTION__,__LINE__,uuid);
+        } else {
+            NSLog(@"%s,%d %@ FAILED: %@",__FUNCTION__,__LINE__,uuid,error);
+        }
+    }
 }
 
 - (void)uploadRecord:(GPJRecord*)record

@@ -18,8 +18,8 @@
 - (NSString*)folderPathOfRecordUUID:(NSString*)recordUUID createIfNotExist:(BOOL)create;
 
 - (void)saveRecord:(GPJRecord*)record
-           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+           success:(void (^)())success
+           failure:(void (^)(NSError *error))failure;
 
 - (void)uploadRecord:(GPJRecord*)record
              success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
