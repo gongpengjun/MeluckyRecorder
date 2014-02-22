@@ -160,7 +160,7 @@
 #pragma mark - Actions
 
 - (IBAction)saveAction:(id)sender {
-    NSLog(@"%s,%d",__FUNCTION__,__LINE__);
+    //NSLog(@"%s,%d",__FUNCTION__,__LINE__);
     if(![[GPJUser sharedUser] isLoggedIn])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];

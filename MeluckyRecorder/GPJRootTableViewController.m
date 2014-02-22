@@ -77,20 +77,12 @@
     return 1;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"UITableViewCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    cell.textLabel.text = @"新建违章记录";
-//    return cell;
-//}
-
 #pragma mark - Table view delegate UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,indexPath);
+    //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,indexPath);
     if(indexPath.section == 1 && indexPath.row == 0) {
         [self batchUploadAction];
     }
@@ -102,10 +94,12 @@
 - (void)batchUploadAction
 {
     NSLog(@"%s,%d",__FUNCTION__,__LINE__);
-    NSArray* recordsArray = [[GPJRecordManager sharedRecordManager] savedRecords];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.dimBackground = YES;
+    
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    
+    NSArray* recordsArray = [[GPJRecordManager sharedRecordManager] savedRecords];
     NSUInteger total = [recordsArray count];
     __block NSUInteger succeedCount = 0;
     __block NSUInteger failureCount = 0;
@@ -114,9 +108,13 @@
     void (^endBlock)() = ^{
         NSString* message = nil;
         if(succeedCount == total) {
-            message = [NSString stringWithFormat:@"全部%d个记录上传成功",total];
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录上传成功",total];
+        } else if (failureCount == total) {
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都上传失败，请检查您的无线网络。",total];
+        } else if (invalidCount == total) {
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都是无效的",total];
         } else {
-            message = [NSString stringWithFormat:@"全部记录上传完成，%d个成功，%d个失败，%d个无效。",succeedCount,failureCount,invalidCount];
+            message = [NSString stringWithFormat:@"上传完成，%d个成功，%d个失败，%d个无效。",succeedCount,failureCount,invalidCount];
         }
         hud.completionBlock = ^() {
             [self.tableView reloadData];
@@ -133,7 +131,6 @@
             invalidCount++;
             if(i >= total - 1) {
                 endBlock();
-                return;
             }
             continue;
         }
@@ -144,26 +141,18 @@
                           hud.margin = 10.f;
                           if([responseObject objectForKey:@"error"]) {
                               invalidCount++;
-                              hud.labelText = [NSString stringWithFormat:@"第%d个记录(总共%d个)上传失败",i,total];
-                              [manager deleteRecordFromDisk:record];
                           } else {
                               succeedCount++;
-                              hud.labelText = [NSString stringWithFormat:@"第%d个记录(总共%d个)上传成功",i,total];
-                              [manager deleteRecordFromDisk:record];
                           }
+                          [manager deleteRecordFromDisk:record];
                           if(i >= total - 1) {
                               endBlock();
-                              return;
                           }
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
                           failureCount++;
-                          hud.mode = MBProgressHUDModeText;
-                          hud.margin = 10.f;
-                          hud.labelText = [NSString stringWithFormat:@"第%d个记录(总共%d个)上传失败",i,total];
                           if(i >= total - 1) {
                               endBlock();
-                              return;
                           }
                       }];
     }
