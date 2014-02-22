@@ -9,6 +9,7 @@
 #import "GPJRootTableViewController.h"
 #import "Constants.h"
 #import "GPJUser.h"
+#import "GPJRecordManager.h"
 
 @interface GPJRootTableViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong) UIBarButtonItem *loginBtnItem;
@@ -61,7 +62,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
-    return 1;
+    if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] > 0)
+        return 2;
+    else
+        return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -82,6 +86,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,indexPath);
+    if(indexPath.section == 1 && indexPath.row == 0) {
+        
+    }
 }
 
 

@@ -14,8 +14,7 @@
 
 + (GPJRecordManager*)sharedRecordManager;
 
-- (NSString*)folderPathOfRecordUUID:(NSString*)recordUUID;
-- (NSString*)folderPathOfRecordUUID:(NSString*)recordUUID createIfNotExist:(BOOL)create;
+- (NSUInteger)countOfSavedRecords;
 
 - (void)saveRecord:(GPJRecord*)record
            success:(void (^)())success

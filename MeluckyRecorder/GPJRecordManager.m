@@ -63,6 +63,15 @@
     return path;
 }
 
+- (NSUInteger)countOfSavedRecords
+{
+    NSUInteger count = 0;
+    NSError * error = nil;
+    NSArray * subFolders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.basePath error:&error];
+    count = [subFolders count];
+    return count;
+}
+
 - (void)saveRecord:(GPJRecord*)record
            success:(void (^)())success
            failure:(void (^)(NSError *error))failure
