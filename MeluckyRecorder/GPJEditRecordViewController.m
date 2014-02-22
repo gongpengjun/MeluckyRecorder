@@ -12,6 +12,8 @@
 #import "GPJUser.h"
 #import "UIImage+Resize.h"
 #import "Constants.h"
+#import "GPJRecordManager.h"
+#import "GPJRecord.h"
 
 @interface GPJEditRecordViewController () <UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) IBOutlet UITextField *txtEmployeeID;
@@ -160,68 +162,97 @@
 
 - (IBAction)saveAction:(id)sender {
     NSLog(@"%s,%d",__FUNCTION__,__LINE__);
-}
-
-- (IBAction)uploadAction:(id)sender
-{
-    NSString* employeeid = self.txtEmployeeID.text;
-    NSString* typeid = self.txtViolateTypeID.text;
-    NSString* place = self.txtViolatePlace.text;
-    UIImage *image = self.gottenImage;
+    if(![[GPJUser sharedUser] isLoggedIn])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];
+        return;
+    }
     
-    if(employeeid.length == 0 || typeid.length == 0 || place.length == 0 || !image)
+    GPJRecord* record = [self recordFromInputFields];
+    
+    if(![record isValidForSave])
     {
         [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章地点、违章照片都不能为空."];
         return;
     }
     
-    NSString* operid = nil;
-    if([[GPJUser sharedUser] isLoggedIn])
-        operid = [[GPJUser sharedUser] userid];
-    else {
+    [self doSaveRecord:record];
+}
+
+- (void)uploadAction:(id)sender
+{
+    if(![[GPJUser sharedUser] isLoggedIn])
+    {
         [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];
         return;
     }
     
-    NSString* deviceid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    GPJRecord* record = [self recordFromInputFields];
     
+    if(![record isValidForUpload])
+    {
+        [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章地点、违章照片都不能为空."];
+        return;
+    }
+    
+    [self doUploadRecord:record];
+}
+
+#pragma mark - Internal action implementation
+
+- (GPJRecord*)recordFromInputFields
+{
+    GPJRecord* record = [[GPJRecord alloc] init];
+    record.uuid = [[NSUUID UUID] UUIDString];
+    record.employeeid = self.txtEmployeeID.text;
+    record.typeid = self.txtViolateTypeID.text;
+    record.place = self.txtViolatePlace.text;
+    record.image = self.gottenImage;
+    return record;
+}
+
+- (void)doSaveRecord:(GPJRecord*)record
+{
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager saveRecord:record
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    
+                }];
+}
+
+- (void)doUploadRecord:(GPJRecord*)record
+{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.dimBackground = YES;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //NSLog(@"%s,%d manager.responseSerializer.acceptableContentTypes:%@",__FUNCTION__,__LINE__,manager.responseSerializer.acceptableContentTypes);
-    NSString *url = @"http://api.gongpengjun.com:90/violations/record.php";
-    NSDictionary *parameters = @{@"employeeid": employeeid, @"typeid" : typeid, @"place" : place, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
-    [manager POST:url
-       parameters:parameters
-constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
-    // the data size of jpg is much smaller than png (1200x1600:1.5MB(jpg)/3.5MB(png))
-    [formData appendPartWithFileData:UIImageJPEGRepresentation(image,1) name:@"photo1" fileName:@"Photo1.jpg" mimeType:@"image/jpeg"];
-}
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
-              // Configure for text only and offset down
-              if([responseObject objectForKey:@"error"]) {
-                  hud.completionBlock = nil;
-                  [hud hide:NO];
-                  [self showAlertWithTitle:@"错误" message:responseObject[@"error"][@"prompt"]];
-              } else {
-                  hud.labelText = responseObject[@"message"];
-                  hud.completionBlock = ^() {
-                      [self.navigationController popViewControllerAnimated:YES];
-                  };
-              }
-              hud.mode = MBProgressHUDModeText;
-              hud.margin = 10.f;
-              hud.removeFromSuperViewOnHide = YES;
-              [hud hide:YES afterDelay:1];
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
-              hud.mode = MBProgressHUDModeText;
-              hud.labelText = [error localizedDescription];
-              hud.margin = 10.f;
-              hud.removeFromSuperViewOnHide = YES;
-              [hud hide:YES afterDelay:1];
-          }];
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager uploadRecord:record
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+                      // Configure for text only and offset down
+                      if([responseObject objectForKey:@"error"]) {
+                          hud.completionBlock = nil;
+                          [hud hide:NO];
+                          [self showAlertWithTitle:@"错误" message:responseObject[@"error"][@"prompt"]];
+                      } else {
+                          hud.labelText = responseObject[@"message"];
+                          hud.completionBlock = ^() {
+                              [self.navigationController popViewControllerAnimated:YES];
+                          };
+                      }
+                      hud.mode = MBProgressHUDModeText;
+                      hud.margin = 10.f;
+                      hud.removeFromSuperViewOnHide = YES;
+                      [hud hide:YES afterDelay:1];
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+                      hud.mode = MBProgressHUDModeText;
+                      hud.labelText = [error localizedDescription];
+                      hud.margin = 10.f;
+                      hud.removeFromSuperViewOnHide = YES;
+                      [hud hide:YES afterDelay:1];
+                  }];
 }
 
 #pragma mark - Table view data source
