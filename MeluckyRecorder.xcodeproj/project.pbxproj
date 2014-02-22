@@ -124,6 +124,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C401080C18B8E4F70028A639 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4203BF0189C885300C8711A /* GPJRootTableViewController.h */,
+				C4203BF1189C885300C8711A /* GPJRootTableViewController.m */,
+				C4203BF4189C987500C8711A /* GPJLoginViewController.h */,
+				C4203BF5189C987500C8711A /* GPJLoginViewController.m */,
+				C4E54784189CED190092C122 /* GPJEditRecordViewController.h */,
+				C4E54785189CED190092C122 /* GPJEditRecordViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C401080D18B8E5070028A639 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C45D71BC189CB0A1007D3DD2 /* GPJUser.h */,
+				C45D71BD189CB0A1007D3DD2 /* GPJUser.m */,
+				C4203BF8189CA92500C8711A /* CookieManager.h */,
+				C4203BF9189CA92500C8711A /* CookieManager.m */,
+				C460A2EE18B635BE00E5DFC6 /* GPJRecordManager.h */,
+				C460A2EF18B635BE00E5DFC6 /* GPJRecordManager.m */,
+				C460A2F318B6394D00E5DFC6 /* GPJRecord.h */,
+				C460A2F418B6394D00E5DFC6 /* GPJRecord.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		C4203BA8189C7A8000C8711A = {
 			isa = PBXGroup;
 			children = (
@@ -163,21 +191,9 @@
 				C4203BFD189CAC8E00C8711A /* Constants.m */,
 				C4203BC3189C7A8000C8711A /* GPJAppDelegate.h */,
 				C4203BC4189C7A8000C8711A /* GPJAppDelegate.m */,
+				C401080C18B8E4F70028A639 /* ViewControllers */,
+				C401080D18B8E5070028A639 /* Model */,
 				C4203BC6189C7A8000C8711A /* Main.storyboard */,
-				C4203BF0189C885300C8711A /* GPJRootTableViewController.h */,
-				C4203BF1189C885300C8711A /* GPJRootTableViewController.m */,
-				C4203BF4189C987500C8711A /* GPJLoginViewController.h */,
-				C4203BF5189C987500C8711A /* GPJLoginViewController.m */,
-				C4E54784189CED190092C122 /* GPJEditRecordViewController.h */,
-				C4E54785189CED190092C122 /* GPJEditRecordViewController.m */,
-				C45D71BC189CB0A1007D3DD2 /* GPJUser.h */,
-				C45D71BD189CB0A1007D3DD2 /* GPJUser.m */,
-				C4203BF8189CA92500C8711A /* CookieManager.h */,
-				C4203BF9189CA92500C8711A /* CookieManager.m */,
-				C460A2EE18B635BE00E5DFC6 /* GPJRecordManager.h */,
-				C460A2EF18B635BE00E5DFC6 /* GPJRecordManager.m */,
-				C460A2F318B6394D00E5DFC6 /* GPJRecord.h */,
-				C460A2F418B6394D00E5DFC6 /* GPJRecord.m */,
 				C4E54787189CF1820092C122 /* UIImage+Resize */,
 				C4203BCC189C7A8000C8711A /* Images.xcassets */,
 				C4203BE9189C867500C8711A /* types.json */,

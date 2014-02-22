@@ -16,9 +16,13 @@
 
 - (NSUInteger)countOfSavedRecords;
 
+- (NSArray*)savedRecords;
+
 - (void)saveRecord:(GPJRecord*)record
            success:(void (^)())success
            failure:(void (^)(NSError *error))failure;
+
+- (void)deleteRecordFromDisk:(GPJRecord*)record;
 
 - (void)uploadRecord:(GPJRecord*)record
              success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success

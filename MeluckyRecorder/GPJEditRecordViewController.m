@@ -21,7 +21,6 @@
 @property (nonatomic, strong) IBOutlet UITextField *txtViolatePlace;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *gottenImage;
-@property (nonatomic, strong) IBOutlet UIButton *btnUpload;
 @end
 
 @implementation GPJEditRecordViewController

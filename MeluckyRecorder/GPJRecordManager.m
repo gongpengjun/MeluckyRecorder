@@ -30,6 +30,7 @@
     self = [super init];
     if(self) {
         self.basePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/records"];
+        NSLog(@"%s,%d basePath: %@",__FUNCTION__,__LINE__,self.basePath);
         if (![[NSFileManager defaultManager] fileExistsAtPath:self.basePath]) {
             [[NSFileManager defaultManager] createDirectoryAtPath:self.basePath withIntermediateDirectories:YES attributes:nil error:nil];
         }
@@ -70,6 +71,39 @@
     NSArray * subFolders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.basePath error:&error];
     count = [subFolders count];
     return count;
+}
+
+- (NSArray*)savedRecords
+{
+    NSUInteger count = 0;
+    NSError * error = nil;
+    NSArray * subFolders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.basePath error:&error];
+    count = [subFolders count];
+    NSMutableArray * recordsArray = [NSMutableArray arrayWithCapacity:count];
+    NSString* folderPath = nil;
+    UIImage* photo1 = nil;
+    NSData * data = nil;
+    NSDictionary* dict = nil;
+    GPJRecord * record = nil;
+    for (NSString* name in subFolders) {
+        folderPath = [self.basePath stringByAppendingPathComponent:name];
+        data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:@"record.json"]];
+        photo1 = [UIImage imageWithContentsOfFile:[folderPath stringByAppendingPathComponent:@"photo1.jpg"]];
+        if(data && photo1) {
+            dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            record = [[GPJRecord alloc] init];
+            record.uuid = [dict valueForKey:@"uuid"];
+            record.employeeid = [dict valueForKey:@"employeeid"];
+            record.typeid = [dict valueForKey:@"typeid"];
+            record.place = [dict valueForKey:@"place"];
+            record.imageName = [dict valueForKey:@"imageName"];
+            record.image = photo1;
+            [recordsArray addObject:record];
+        } else {
+            [[NSFileManager defaultManager] removeItemAtPath:folderPath error:nil];
+        }
+    }
+    return recordsArray;
 }
 
 - (void)saveRecord:(GPJRecord*)record
