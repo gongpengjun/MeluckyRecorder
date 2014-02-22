@@ -56,6 +56,8 @@
     {
         self.navigationItem.rightBarButtonItem = self.loginBtnItem;
     }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
