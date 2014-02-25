@@ -57,6 +57,24 @@
     [self.txtEmployeeID becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.userInfoOperation cancel];
+    self.userInfoOperation = nil;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if([self.txtEmployeeID.text length] > 0 && !self.userInfoOperation)
+        [self fetchAndShowUserInfo];
+    
+    if([self.txtViolateTypeNum.text length] > 0 && [self.txtTypeDetail.text length] == 0)
+        [self showTypeInfo];
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if([textField isEqual:self.txtEmployeeID])
@@ -118,7 +136,7 @@
         } else {
             NSLog(@"%s,%d violation type doesn't exist.",__FUNCTION__,__LINE__);
             self.txtTypeDetail.text = @"该条款不存在";
-            self.txtTypeDetail.text = @"该条款不存在";
+            self.txtTypeScore.text  = @"该条款不存在";
         }
     }
 }
@@ -351,7 +369,7 @@
             break;
             
         case 3:
-            rows = 1;
+            rows = 2;
             break;
             
         default:
@@ -385,6 +403,8 @@
         [self pickPhotoAction:self.imageView];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:3]]) {
         [self uploadAction:tableView];
+    } else if([indexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:3]]) {
+        [self saveAction:tableView];
     }
 }
 

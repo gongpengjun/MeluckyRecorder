@@ -368,6 +368,23 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_3_1_cell" textLabel="nzo-w0-nhY" rowHeight="80" style="IBUITableViewCellStyleDefault" id="Gff-OA-eYr">
+                                        <rect key="frame" x="0.0" y="852" width="768" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gff-OA-eYr" id="mQw-Zv-01A">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="保存" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nzo-w0-nhY">
+                                                    <rect key="frame" x="15" y="0.0" width="738" height="79"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -376,13 +393,7 @@
                             <outlet property="delegate" destination="FCe-lQ-nMo" id="Wy7-I2-fL4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="新建违章记录" id="hMQ-uP-7V6">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="u0E-7O-G93">
-                            <connections>
-                                <action selector="saveAction:" destination="FCe-lQ-nMo" id="qUJ-qU-8Bu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="新建违章记录" id="hMQ-uP-7V6"/>
                     <connections>
                         <outlet property="imageView" destination="vCw-wv-7SJ" id="g9r-YD-QK1"/>
                         <outlet property="txtDeptName" destination="LkX-QI-bMz" id="3oj-SW-Xdm"/>
