@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "GPJLoginViewController.h"
 #import "GPJUser.h"
+#import "GPJRecordManager.h"
 
 @implementation GPJAppDelegate
 
@@ -52,6 +53,7 @@
 
 - (void)startLogin
 {
+    [[GPJRecordManager sharedRecordManager] loadViolationTypesDatabase];
     if(![[GPJUser sharedUser] isLoggedIn] ){
         [self showLoginViewAnimated:NO];
     }

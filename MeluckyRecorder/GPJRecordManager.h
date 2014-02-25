@@ -12,7 +12,11 @@
 
 @interface GPJRecordManager : NSObject
 
+@property (nonatomic, strong) NSDictionary * typesDict;
+
 + (GPJRecordManager*)sharedRecordManager;
+
+- (void)loadViolationTypesDatabase;
 
 - (NSUInteger)countOfSavedRecords;
 

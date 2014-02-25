@@ -38,6 +38,24 @@
     return self;
 }
 
+- (void)loadViolationTypesDatabase
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"json"];
+        NSError *error = nil;
+        NSData* data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
+        if(!data) {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+        }
+        self.typesDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if(!self.typesDict) {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+        } else {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,self.typesDict);
+        }
+    });
+}
+
 - (NSString*)infoPath
 {
     return [self.basePath stringByAppendingPathComponent:@"Info.plist"];
