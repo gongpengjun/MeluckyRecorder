@@ -88,14 +88,14 @@
         {
             "ViolateCategoryID": "7",
             "ViolateCategoryName": "机坪破坏环境违章",
-            "ViolateTypeNum": "301",
+            "ViolateTypeNum": "701",
             "ViolateTypeName": "在机坪存放，向机坪倾倒、丢弃垃圾或其它废弃物品的",
             "ViolateScores": "3"
         },
         {
             "ViolateCategoryID": "7",
             "ViolateCategoryName": "机坪破坏环境违章",
-            "ViolateTypeNum": "302",
+            "ViolateTypeNum": "702",
             "ViolateTypeName": "排放或溢漏汽油、航空煤油、润滑油、液压油等油料到机坪上的。",
             "ViolateScores": "3"
         }
