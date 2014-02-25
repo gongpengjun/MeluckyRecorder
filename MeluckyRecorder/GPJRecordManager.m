@@ -88,15 +88,15 @@
     return info;
 }
 
-- (void)infoForUserID:(NSString*)userId
-             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AFHTTPRequestOperation *)getInfoForUserID:(NSString*)userId
+                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 {
     NSString *urlString = [NSString stringWithFormat:@"http://api.gongpengjun.com:90/violations/employee.php?employeeid=%@",userId];
-    [[AFHTTPRequestOperationManager manager] GET:urlString
-                                       parameters:nil
-                                          success:success
-                                          failure:failure];
+    return [[AFHTTPRequestOperationManager manager] GET:urlString
+                                             parameters:nil
+                                                success:success
+                                                failure:failure];
     
 }
 

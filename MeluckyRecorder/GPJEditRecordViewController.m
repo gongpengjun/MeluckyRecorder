@@ -22,7 +22,10 @@
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *txtUserName;
 @property (weak, nonatomic) IBOutlet UITextField *txtDeptName;
+@property (weak, nonatomic) IBOutlet UITextField *txtTypeDetail;
+@property (weak, nonatomic) IBOutlet UITextField *txtTypeScore;
 @property (nonatomic, strong) UIImage *gottenImage;
+@property (nonatomic, strong) AFHTTPRequestOperation * userInfoOperation;
 @end
 
 @implementation GPJEditRecordViewController
@@ -63,14 +66,7 @@
     }
     else if([textField isEqual:self.txtViolateTypeNum])
     {// Next -> violate place
-        if([self.txtViolateTypeNum.text length] > 0) {
-            NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateNumber:self.txtViolateTypeNum.text];
-            if(info) {
-                NSLog(@"%s,%d num: %@ category: %@ name: %@",__FUNCTION__,__LINE__,info[@"ViolateTypeNum"],info[@"ViolateCategoryName"],info[@"ViolateTypeName"]);
-            } else {
-                NSLog(@"%s,%d violation type doesn't exist.",__FUNCTION__,__LINE__);
-            }
-        }
+        [self showTypeInfo];
         [self.txtViolatePlace becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolatePlace])
@@ -90,23 +86,43 @@
     [self.tableView reloadData];
     if([self.txtEmployeeID.text length] > 0) {
         GPJRecordManager *manager = [GPJRecordManager sharedRecordManager];
-        [manager infoForUserID:self.txtEmployeeID.text
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           NSDictionary* info = responseObject;
-                           if([info objectForKey:@"error"]) {
-                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
-                               self.txtUserName.text = @"该用户不存在";
-                               self.txtDeptName.text = @"该用户不存在";
-                           } else {
-                               self.txtUserName.text = info[@"UserName"];
-                               self.txtDeptName.text = info[@"DeptName"];
-                               NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
-                           }
-                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
-                       }];
+        [self.userInfoOperation cancel]; self.userInfoOperation = nil;
+        self.userInfoOperation =
+        [manager getInfoForUserID:self.txtEmployeeID.text
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              NSDictionary* info = responseObject;
+                              if([info objectForKey:@"error"]) {
+                                  NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
+                                  self.txtUserName.text = @"该用户不存在";
+                                  self.txtDeptName.text = @"该用户不存在";
+                              } else {
+                                  self.txtUserName.text = info[@"UserName"];
+                                  self.txtDeptName.text = info[@"DeptName"];
+                                  NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
+                              }
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+                          }];
     }
 }
+
+- (void)showTypeInfo
+{
+    [self.tableView reloadData];
+    if([self.txtViolateTypeNum.text length] > 0) {
+        NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateNumber:self.txtViolateTypeNum.text];
+        if(info) {
+            self.txtTypeDetail.text = info[@"ViolateTypeName"];
+            self.txtTypeScore.text = [NSString stringWithFormat:@"%@分",info[@"ViolateScores"]];
+            NSLog(@"%s,%d num: %@ category: %@ name: %@",__FUNCTION__,__LINE__,info[@"ViolateTypeNum"],info[@"ViolateCategoryName"],info[@"ViolateTypeName"]);
+        } else {
+            NSLog(@"%s,%d violation type doesn't exist.",__FUNCTION__,__LINE__);
+            self.txtTypeDetail.text = @"该条款不存在";
+            self.txtTypeDetail.text = @"该条款不存在";
+        }
+    }
+}
+
 #pragma mark - Photo
 
 - (IBAction)pickPhotoAction:(UIView*)fromView {
@@ -323,11 +339,15 @@
             break;
             
         case 1:
-            rows = 1;
+        {
+            if([self.txtViolateTypeNum.text length] > 0)
+                rows = 3;
+            else
+                rows = 1;
+        }
             break;
-            
         case 2:
-            rows = 2;
+                rows = 2;
             break;
             
         case 3:
@@ -356,8 +376,10 @@
     if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]) {
         [self.txtEmployeeID becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:1]]) {
+        [self fetchAndShowUserInfo];
         [self.txtViolateTypeNum becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:2]]) {
+        [self showTypeInfo];
         [self.txtViolatePlace becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:2]]) {
         [self pickPhotoAction:self.imageView];

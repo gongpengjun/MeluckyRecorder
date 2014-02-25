@@ -22,9 +22,9 @@
 
 - (NSDictionary*)infoOfViolateNumber:(NSString*)number;
 
-- (void)infoForUserID:(NSString*)userId
-              success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AFHTTPRequestOperation *)getInfoForUserID:(NSString*)userId
+                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 #pragma mark - Record
 
