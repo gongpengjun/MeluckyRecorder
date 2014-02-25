@@ -105,10 +105,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="违章人员" id="c7d-FN-mmS">
+                            <tableViewSection id="c7d-FN-mmS">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_0_0_cell" id="8Z7-JE-3ZF">
-                                        <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Z7-JE-3ZF" id="dDE-26-Yyd">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -134,7 +134,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_0_1_cell" id="Inv-k7-M2q">
-                                        <rect key="frame" x="0.0" y="130" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Inv-k7-M2q" id="8xu-rr-tcr">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -160,7 +160,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_0_2_cell" id="7MV-yl-fbf">
-                                        <rect key="frame" x="0.0" y="174" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="152" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7MV-yl-fbf" id="ZvF-77-aNL">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -187,10 +187,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="违章信息" id="BbW-Pr-lA0">
+                            <tableViewSection id="BbW-Pr-lA0">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_1_0_cell" id="FLq-TV-Ry5">
-                                        <rect key="frame" x="0.0" y="240" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="196" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLq-TV-Ry5" id="dun-Nz-evj">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -216,7 +216,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_1_1_cell" id="Dn2-lP-4K8">
-                                        <rect key="frame" x="0.0" y="284" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="240" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn2-lP-4K8" id="Are-e0-pbq">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -242,7 +242,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_1_2_cell" id="sbK-Av-iDL">
-                                        <rect key="frame" x="0.0" y="328" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbK-Av-iDL" id="6sw-DQ-apV">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -269,10 +269,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="违章现场" id="czH-lF-hzy">
+                            <tableViewSection id="czH-lF-hzy">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_2_0_cell" id="7YS-cd-hAe">
-                                        <rect key="frame" x="0.0" y="394" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7YS-cd-hAe" id="esW-bm-Nuh">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -298,7 +298,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_2_1_cell" rowHeight="400" id="ug2-xH-hI3">
-                                        <rect key="frame" x="0.0" y="438" width="768" height="400"/>
+                                        <rect key="frame" x="0.0" y="372" width="768" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ug2-xH-hI3" id="C1V-1c-7JL">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="399"/>
@@ -349,10 +349,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="保存/上传" id="q3F-tE-goe">
+                            <tableViewSection id="q3F-tE-goe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ruid_3_0_cell" textLabel="5hH-Vg-3Nd" rowHeight="80" style="IBUITableViewCellStyleDefault" id="kHA-Al-D0r">
-                                        <rect key="frame" x="0.0" y="860" width="768" height="80"/>
+                                        <rect key="frame" x="0.0" y="772" width="768" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kHA-Al-D0r" id="npM-FY-6Fo">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="79"/>
