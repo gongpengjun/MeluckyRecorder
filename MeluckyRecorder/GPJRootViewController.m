@@ -52,7 +52,7 @@
     if([[GPJUser sharedUser] isLoggedIn])
     {
         self.navigationItem.rightBarButtonItem = self.logoutBtnItem;
-        self.title = [NSString stringWithFormat:@"操作员: %@ (%@)", [[GPJUser sharedUser] username], [[GPJUser sharedUser] userid]];
+        self.title = [NSString stringWithFormat:@"操作员: %@", [[GPJUser sharedUser] username]];
     }
     else
     {
