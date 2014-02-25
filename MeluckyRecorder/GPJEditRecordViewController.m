@@ -20,6 +20,8 @@
 @property (nonatomic, strong) IBOutlet UITextField *txtViolateTypeNum;
 @property (nonatomic, strong) IBOutlet UITextField *txtViolatePlace;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextField *txtUserName;
+@property (weak, nonatomic) IBOutlet UITextField *txtDeptName;
 @property (nonatomic, strong) UIImage *gottenImage;
 @end
 
@@ -56,20 +58,7 @@
 {
     if([textField isEqual:self.txtEmployeeID])
     {// Next -> violate type id
-        if([self.txtEmployeeID.text length] > 0) {
-            GPJRecordManager *manager = [GPJRecordManager sharedRecordManager];
-            [manager infoForUserID:self.txtEmployeeID.text
-                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                               NSDictionary* info = responseObject;
-                               if([info objectForKey:@"error"]) {
-                                   NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
-                               } else {
-                                   NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
-                               }
-                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
-                           }];
-        }
+        [self fetchAndShowUserInfo];
         [self.txtViolateTypeNum becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolateTypeNum])
@@ -96,6 +85,28 @@
     return YES;
 }
 
+- (void)fetchAndShowUserInfo
+{
+    [self.tableView reloadData];
+    if([self.txtEmployeeID.text length] > 0) {
+        GPJRecordManager *manager = [GPJRecordManager sharedRecordManager];
+        [manager infoForUserID:self.txtEmployeeID.text
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           NSDictionary* info = responseObject;
+                           if([info objectForKey:@"error"]) {
+                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
+                               self.txtUserName.text = @"该用户不存在";
+                               self.txtDeptName.text = @"该用户不存在";
+                           } else {
+                               self.txtUserName.text = info[@"UserName"];
+                               self.txtDeptName.text = info[@"DeptName"];
+                               NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
+                           }
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+                       }];
+    }
+}
 #pragma mark - Photo
 
 - (IBAction)pickPhotoAction:(UIView*)fromView {
@@ -293,19 +304,46 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 4;
-//}
-//
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger rows = 0;
+    switch (section) {
+        case 0:
+        {
+            if([self.txtEmployeeID.text length] > 0)
+                rows = 3;
+            else
+                rows = 1;
+        }
+            break;
+            
+        case 1:
+            rows = 1;
+            break;
+            
+        case 2:
+            rows = 2;
+            break;
+            
+        case 3:
+            rows = 1;
+            break;
+            
+        default:
+            rows = 0;
+            break;
+    }
+    return rows;
+}
+
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    static NSString *CellIdentifier = @"Cell";
+//    NSString *CellIdentifier = [NSString stringWithFormat:@"ruid_%d_%d_cell",indexPath.section,indexPath.row];
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 //    return cell;
 //}
@@ -315,24 +353,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
-        case 0:
-            [self.txtEmployeeID becomeFirstResponder];
-            break;
-        case 1:
-            [self.txtViolateTypeNum becomeFirstResponder];
-            break;
-        case 2:
-            [self.txtViolatePlace becomeFirstResponder];
-            break;
-        case 3:
-            [self pickPhotoAction:self.imageView];
-            break;
-        case 4:
-            [self uploadAction:tableView];
-            break;
-        default:
-            break;
+    if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]) {
+        [self.txtEmployeeID becomeFirstResponder];
+    } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:1]]) {
+        [self.txtViolateTypeNum becomeFirstResponder];
+    } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:2]]) {
+        [self.txtViolatePlace becomeFirstResponder];
+    } else if([indexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:2]]) {
+        [self pickPhotoAction:self.imageView];
+    } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:3]]) {
+        [self uploadAction:tableView];
     }
 }
 
