@@ -1,24 +1,24 @@
 //
-//  GPJTableViewController.m
+//  GPJRootViewController.m
 //  MeluckyRecorder
 //
 //  Created by Gong Pengjun on 14-2-1.
 //  Copyright (c) 2014年 www.GongPengjun.com. All rights reserved.
 //
 
-#import "GPJRootTableViewController.h"
+#import "GPJRootViewController.h"
 #import "Constants.h"
 #import "GPJUser.h"
 #import "GPJRecordManager.h"
 #import "MBProgressHUD.h"
 #import "GPJRecord.h"
 
-@interface GPJRootTableViewController () <UIAlertViewDelegate>
+@interface GPJRootViewController () <UIAlertViewDelegate>
 @property (nonatomic, strong) UIBarButtonItem *loginBtnItem;
 @property (nonatomic, strong) UIBarButtonItem *logoutBtnItem;
 @end
 
-@implementation GPJRootTableViewController
+@implementation GPJRootViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

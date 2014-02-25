@@ -1,5 +1,5 @@
 //
-//  GPJTableViewController.h
+//  GPJRootViewController.h
 //  MeluckyRecorder
 //
 //  Created by Gong Pengjun on 14-2-1.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPJRootTableViewController : UITableViewController
+@interface GPJRootViewController : UITableViewController
 
 @end
