@@ -56,13 +56,31 @@
 {
     if([textField isEqual:self.txtEmployeeID])
     {// Next -> violate type id
+        if([self.txtEmployeeID.text length] > 0) {
+            GPJRecordManager *manager = [GPJRecordManager sharedRecordManager];
+            [manager infoForUserID:self.txtEmployeeID.text
+                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                               NSDictionary* info = responseObject;
+                               if([info objectForKey:@"error"]) {
+                                   NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
+                               } else {
+                                   NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
+                               }
+                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+                           }];
+        }
         [self.txtViolateTypeNum becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolateTypeNum])
     {// Next -> violate place
         if([self.txtViolateTypeNum.text length] > 0) {
             NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateNumber:self.txtViolateTypeNum.text];
-            NSLog(@"%s,%d num: %@ category: %@ name: %@",__FUNCTION__,__LINE__,info[@"ViolateTypeNum"],info[@"ViolateCategoryName"],info[@"ViolateTypeName"]);
+            if(info) {
+                NSLog(@"%s,%d num: %@ category: %@ name: %@",__FUNCTION__,__LINE__,info[@"ViolateTypeNum"],info[@"ViolateCategoryName"],info[@"ViolateTypeName"]);
+            } else {
+                NSLog(@"%s,%d violation type doesn't exist.",__FUNCTION__,__LINE__);
+            }
         }
         [self.txtViolatePlace becomeFirstResponder];
     }

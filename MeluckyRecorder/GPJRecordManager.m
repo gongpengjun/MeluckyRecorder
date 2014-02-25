@@ -43,9 +43,16 @@
 - (void)loadViolationTypesDatabase
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString * path = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"json"];
         NSError *error = nil;
-        NSData* data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
+        NSString * targetPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/types.json"];
+        NSString * sourcePath = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"json"];
+        if(![[NSFileManager defaultManager] fileExistsAtPath:targetPath]) {
+            if(![[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:targetPath error:&error]) {
+                NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+            }
+        }
+        
+        NSData* data = [NSData dataWithContentsOfFile:targetPath options:NSDataReadingMappedIfSafe error:&error];
         if(!data) {
             NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
         }
@@ -53,7 +60,11 @@
         if(!self.typesDict) {
             NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
         } else {
-            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,self.typesDict);
+            //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,self.typesDict);
+            NSParameterAssert([self.typesDict objectForKey:@"version"]);
+            NSParameterAssert([self.typesDict objectForKey:@"types"]);
+            NSParameterAssert([self.typesDict[@"types"] count] > 0);
+            NSLog(@"%s,%d violation type version: %@ count: %d",__FUNCTION__,__LINE__,self.typesDict[@"version"],[self.typesDict[@"types"] count]);
         }
     });
 }
@@ -75,6 +86,18 @@
     }
     
     return info;
+}
+
+- (void)infoForUserID:(NSString*)userId
+             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.gongpengjun.com:90/violations/employee.php?employeeid=%@",userId];
+    [[AFHTTPRequestOperationManager manager] GET:urlString
+                                       parameters:nil
+                                          success:success
+                                          failure:failure];
+    
 }
 
 #pragma mark - Record
