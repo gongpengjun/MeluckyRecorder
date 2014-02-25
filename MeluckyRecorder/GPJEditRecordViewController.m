@@ -60,6 +60,10 @@
     }
     else if([textField isEqual:self.txtViolateTypeNum])
     {// Next -> violate place
+        if([self.txtViolateTypeNum.text length] > 0) {
+            NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateNumber:self.txtViolateTypeNum.text];
+            NSLog(@"%s,%d num: %@ category: %@ name: %@",__FUNCTION__,__LINE__,info[@"ViolateTypeNum"],info[@"ViolateCategoryName"],info[@"ViolateTypeName"]);
+        }
         [self.txtViolatePlace becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolatePlace])

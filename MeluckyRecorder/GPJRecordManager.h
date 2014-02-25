@@ -16,7 +16,13 @@
 
 + (GPJRecordManager*)sharedRecordManager;
 
+#pragma mark - Violation Types Database
+
 - (void)loadViolationTypesDatabase;
+
+- (NSDictionary*)infoOfViolateNumber:(NSString*)number;
+
+#pragma mark - Record
 
 - (NSUInteger)countOfSavedRecords;
 

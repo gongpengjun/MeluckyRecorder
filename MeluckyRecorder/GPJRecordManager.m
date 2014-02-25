@@ -38,6 +38,8 @@
     return self;
 }
 
+#pragma mark - Violation Types Database
+
 - (void)loadViolationTypesDatabase
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -55,6 +57,27 @@
         }
     });
 }
+
+- (NSDictionary*)infoOfViolateNumber:(NSString*)number
+{
+    NSParameterAssert(number);
+    NSParameterAssert(self.typesDict);
+    NSParameterAssert([self.typesDict objectForKey:@"types"]);
+    
+    NSDictionary* info = nil;
+    NSArray* typesArray = self.typesDict[@"types"];
+    for(NSDictionary *typeInfo in typesArray) {
+        NSString* typeNum = [typeInfo objectForKey:@"ViolateTypeNum"];
+        if([typeNum isEqualToString:number]) {
+            info = typeInfo;
+            break;
+        }
+    }
+    
+    return info;
+}
+
+#pragma mark - Record
 
 - (NSString*)infoPath
 {
