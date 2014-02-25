@@ -79,7 +79,7 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="违章记录" id="zeT-1D-GtC">
-                        <barButtonItem key="backBarButtonItem" title="返回" id="IcX-r4-Tvf"/>
+                        <barButtonItem key="backBarButtonItem" title="取消" id="IcX-r4-Tvf"/>
                         <barButtonItem key="leftBarButtonItem" title="注销" id="gLa-pC-HTW">
                             <connections>
                                 <action selector="logoutAction:" destination="6JW-F4-FNe" id="wuO-oe-c14"/>
