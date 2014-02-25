@@ -13,7 +13,7 @@
 - (BOOL)isValidForSave
 {
     if(self.employeeid.length == 0 ||
-       self.typeid.length == 0 ||
+       self.typenum.length == 0 ||
        self.place.length == 0 ||
        !self.image ||
        self.uuid.length == 0)
@@ -25,7 +25,7 @@
 - (BOOL)isValidForUpload
 {
     if(self.employeeid.length == 0 ||
-       self.typeid.length == 0 ||
+       self.typenum.length == 0 ||
        self.place.length == 0 ||
        !self.image)
         return NO;

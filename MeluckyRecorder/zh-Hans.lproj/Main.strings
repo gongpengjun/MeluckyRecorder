@@ -44,8 +44,8 @@
 /* Class = "IBUILabel"; text = "违章地点"; ObjectID = "kYJ-LJ-CR2"; */
 "kYJ-LJ-CR2.text" = "违章地点";
 
-/* Class = "IBUITextField"; placeholder = "违章条款 (例如: 1002)"; ObjectID = "mNU-HO-D6y"; */
-"mNU-HO-D6y.placeholder" = "违章条款 (例如: 1002)";
+/* Class = "IBUITextField"; placeholder = "违章条款 (例如: 301)"; ObjectID = "mNU-HO-D6y"; */
+"mNU-HO-D6y.placeholder" = "违章条款 (例如: 301)";
 
 /* Class = "IBUILabel"; text = "违章照片"; ObjectID = "r6z-eO-ZTX"; */
 "r6z-eO-ZTX.text" = "违章照片";

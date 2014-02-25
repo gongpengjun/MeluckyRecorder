@@ -147,7 +147,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="违章条款 (例如: 1002)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-HO-D6y">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="违章条款 (例如: 301)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-HO-D6y">
                                                     <rect key="frame" x="103" y="7" width="645" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -271,7 +271,7 @@
                         <outlet property="imageView" destination="Zo8-k8-g40" id="XKi-fU-v4O"/>
                         <outlet property="txtEmployeeID" destination="5g7-Qd-nBK" id="JfZ-Ll-clj"/>
                         <outlet property="txtViolatePlace" destination="I4D-vD-NDx" id="Rk5-ug-0oz"/>
-                        <outlet property="txtViolateTypeID" destination="mNU-HO-D6y" id="HOR-sq-EiQ"/>
+                        <outlet property="txtViolateTypeNum" destination="mNU-HO-D6y" id="7ED-MO-3Ch"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hd-zb-lTW" userLabel="First Responder" sceneMemberID="firstResponder"/>

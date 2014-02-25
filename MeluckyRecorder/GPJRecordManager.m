@@ -94,7 +94,7 @@
             record = [[GPJRecord alloc] init];
             record.uuid = [dict valueForKey:@"uuid"];
             record.employeeid = [dict valueForKey:@"employeeid"];
-            record.typeid = [dict valueForKey:@"typeid"];
+            record.typenum = [dict valueForKey:@"typenum"];
             record.place = [dict valueForKey:@"place"];
             record.imageName = [dict valueForKey:@"imageName"];
             record.image = photo1;
@@ -120,7 +120,7 @@
         NSDictionary* dict = @{
                                @"uuid"       : record.uuid,
                                @"employeeid" : record.employeeid,
-                               @"typeid"     : record.typeid,
+                               @"typenum"     : record.typenum,
                                @"place"      : record.place,
                                @"imageName"  : record.imageName
                                };
@@ -178,7 +178,7 @@
              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 {
     NSString* employeeid = record.employeeid;
-    NSString* typeid = record.typeid;
+    NSString* typenum = record.typenum;
     NSString* place = record.place;
     UIImage * image = record.image;
     NSString* operid = [[GPJUser sharedUser] userid];
@@ -189,7 +189,7 @@
     //NSLog(@"%s,%d manager.responseSerializer.acceptableContentTypes:%@",__FUNCTION__,__LINE__,manager.responseSerializer.acceptableContentTypes);
     
     NSString *url = @"http://api.gongpengjun.com:90/violations/record.php";
-    NSDictionary *parameters = @{@"employeeid": employeeid, @"typeid" : typeid, @"place" : place, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
+    NSDictionary *parameters = @{@"employeeid": employeeid, @"typenum" : typenum, @"place" : place, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
     
     void (^constructBody)(id <AFMultipartFormData> formData) = ^(id <AFMultipartFormData> formData) {
         // the data size of jpg is much smaller than png (1200x1600:1.5MB(jpg)/3.5MB(png))

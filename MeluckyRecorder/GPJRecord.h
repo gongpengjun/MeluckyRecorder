@@ -11,7 +11,7 @@
 @interface GPJRecord : NSObject
 @property (nonatomic, retain) NSString *uuid;
 @property (nonatomic, retain) NSString *employeeid;
-@property (nonatomic, retain) NSString *typeid;
+@property (nonatomic, retain) NSString *typenum;
 @property (nonatomic, retain) NSString *place;
 @property (nonatomic, retain) UIImage  *image;
 @property (nonatomic, retain) NSString *imageName;

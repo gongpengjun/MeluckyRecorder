@@ -17,7 +17,7 @@
 
 @interface GPJEditRecordViewController () <UITextFieldDelegate,UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) IBOutlet UITextField *txtEmployeeID;
-@property (nonatomic, strong) IBOutlet UITextField *txtViolateTypeID;
+@property (nonatomic, strong) IBOutlet UITextField *txtViolateTypeNum;
 @property (nonatomic, strong) IBOutlet UITextField *txtViolatePlace;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *gottenImage;
@@ -56,9 +56,9 @@
 {
     if([textField isEqual:self.txtEmployeeID])
     {// Next -> violate type id
-        [self.txtViolateTypeID becomeFirstResponder];
+        [self.txtViolateTypeNum becomeFirstResponder];
     }
-    else if([textField isEqual:self.txtViolateTypeID])
+    else if([textField isEqual:self.txtViolateTypeNum])
     {// Next -> violate place
         [self.txtViolatePlace becomeFirstResponder];
     }
@@ -204,7 +204,7 @@
     GPJRecord* record = [[GPJRecord alloc] init];
     record.uuid = [[NSUUID UUID] UUIDString];
     record.employeeid = self.txtEmployeeID.text;
-    record.typeid = self.txtViolateTypeID.text;
+    record.typenum = self.txtViolateTypeNum.text;
     record.place = self.txtViolatePlace.text;
     record.image = self.gottenImage;
     return record;
@@ -298,7 +298,7 @@
             [self.txtEmployeeID becomeFirstResponder];
             break;
         case 1:
-            [self.txtViolateTypeID becomeFirstResponder];
+            [self.txtViolateTypeNum becomeFirstResponder];
             break;
         case 2:
             [self.txtViolatePlace becomeFirstResponder];
