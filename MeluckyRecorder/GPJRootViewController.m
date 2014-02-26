@@ -14,7 +14,6 @@
 #import "GPJRecord.h"
 
 @interface GPJRootViewController () <UIAlertViewDelegate>
-@property (nonatomic, strong) UIBarButtonItem *loginBtnItem;
 @property (nonatomic, strong) UIBarButtonItem *logoutBtnItem;
 @end
 
@@ -38,9 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.loginBtnItem = self.navigationItem.rightBarButtonItem;
     self.logoutBtnItem = self.navigationItem.leftBarButtonItem;
-    self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
     self.automaticallyAdjustsScrollViewInsets = NO;
     CGFloat topEdge = CGRectGetHeight(self.navigationController.navigationBar.frame);
     self.tableView.contentInset = UIEdgeInsetsMake(topEdge, 0, 0, 0);
@@ -51,12 +49,12 @@
     [super viewWillAppear:animated];
     if([[GPJUser sharedUser] isLoggedIn])
     {
-        self.navigationItem.rightBarButtonItem = self.logoutBtnItem;
+        self.navigationItem.leftBarButtonItem = self.logoutBtnItem;
         self.title = [NSString stringWithFormat:@"操作员: %@", [[GPJUser sharedUser] username]];
     }
     else
     {
-        self.navigationItem.rightBarButtonItem = self.loginBtnItem;
+        self.navigationItem.rightBarButtonItem = nil;
     }
     
     [self.tableView reloadData];

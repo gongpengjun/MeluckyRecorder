@@ -85,11 +85,6 @@
                                 <action selector="logoutAction:" destination="6JW-F4-FNe" id="wuO-oe-c14"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="登陆" id="TCS-OS-M9x">
-                            <connections>
-                                <segue destination="2wC-RE-WIa" kind="modal" identifier="ShowLoginView" id="vJK-np-hPH"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sB-N0-pU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
