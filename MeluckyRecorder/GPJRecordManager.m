@@ -38,6 +38,20 @@
     return self;
 }
 
+#pragma mark - Violating User Info
+
+- (AFHTTPRequestOperation *)getInfoForUserID:(NSString*)userId
+                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.gongpengjun.com:90/violations/employee.php?employeeid=%@",userId];
+    return [[AFHTTPRequestOperationManager manager] GET:urlString
+                                             parameters:nil
+                                                success:success
+                                                failure:failure];
+    
+}
+
 #pragma mark - Violation Types Database
 
 - (void)loadViolationTypesDatabase
@@ -69,7 +83,7 @@
     });
 }
 
-- (NSDictionary*)infoOfViolateNumber:(NSString*)number
+- (NSDictionary*)infoOfViolateTypeNumber:(NSString*)number
 {
     NSParameterAssert(number);
     NSParameterAssert(self.typesDict);
@@ -88,16 +102,30 @@
     return info;
 }
 
-- (AFHTTPRequestOperation *)getInfoForUserID:(NSString*)userId
-                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AFHTTPRequestOperation *)checkTypesUpdateWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.gongpengjun.com:90/violations/employee.php?employeeid=%@",userId];
+    NSString *urlString = @"http://api.gongpengjun.com:90/violations/types.php";
     return [[AFHTTPRequestOperationManager manager] GET:urlString
                                              parameters:nil
                                                 success:success
                                                 failure:failure];
-    
+}
+
+- (void)saveTypes:(NSDictionary*)newTypesDict
+          success:(void (^)())success
+          failure:(void (^)(NSError *error))failure;
+{
+    self.typesDict = newTypesDict;
+    NSError *error = nil;
+    NSString * targetPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/types.json"];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:newTypesDict options:NSJSONWritingPrettyPrinted error:&error];
+    if(data && [data writeToFile:targetPath atomically:YES]) {
+        success();
+    } else {
+        error = [NSError errorWithDomain:@"GPJError" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"save types failed" }];
+        failure(error);
+    }
 }
 
 #pragma mark - Record

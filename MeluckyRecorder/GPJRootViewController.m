@@ -156,6 +156,50 @@
     }
 }
 
+- (IBAction)checkUpdateAction:(id)sender {
+    if(![[GPJUser sharedUser] isLoggedIn])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];
+        return;
+    }
+    
+    NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,sender);
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.dimBackground = YES;
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager checkTypesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+        if([responseObject objectForKey:@"error"]) {
+            [self showAlertWithTitle:@"错误" message:responseObject[@"error"][@"prompt"]];
+            [hud hide:NO];
+        } else {
+            NSDictionary* newTypesDict = responseObject;
+            NSInteger oldVersion = [manager.typesDict[@"version"] integerValue];
+            NSInteger newVersion = [newTypesDict[@"version"] integerValue];
+            if(oldVersion < newVersion) {
+                [manager saveTypes:newTypesDict success:^{
+                    [hud hide:NO];
+                    [self showAlertWithTitle:@"成功" message:[NSString stringWithFormat:@"成功把违章数据库从版本%d升级到版本%d",oldVersion,newVersion]];
+                } failure:^(NSError *error) {
+                    [hud hide:NO];
+                    [self showAlertWithTitle:@"错误" message:[error localizedDescription]];
+                }];
+            } else {
+                [hud hide:NO];
+                [self showAlertWithTitle:@"提示" message:[NSString stringWithFormat:@"当前的违章数据库已经是最新版本：%d",oldVersion]];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = [error localizedDescription];
+        hud.margin = 10.f;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1];
+    }];
+}
+
 - (IBAction)logoutAction:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"确定要注销吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -167,6 +211,13 @@
     if(buttonIndex == alertView.cancelButtonIndex)
         return;
     [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:self];
+}
+
+#pragma mark - Helper
+
+- (void)showAlertWithTitle:(NSString*)title message:(NSString*)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
 }
 
 @end

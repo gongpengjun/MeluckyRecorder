@@ -16,15 +16,24 @@
 
 + (GPJRecordManager*)sharedRecordManager;
 
-#pragma mark - Violation Types Database
-
-- (void)loadViolationTypesDatabase;
-
-- (NSDictionary*)infoOfViolateNumber:(NSString*)number;
+#pragma mark - Violating User Info
 
 - (AFHTTPRequestOperation *)getInfoForUserID:(NSString*)userId
                                      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+#pragma mark - Violation Types Database
+
+- (void)loadViolationTypesDatabase;
+
+- (NSDictionary*)infoOfViolateTypeNumber:(NSString*)number;
+
+- (AFHTTPRequestOperation *)checkTypesUpdateWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)saveTypes:(NSDictionary*)typeDict
+          success:(void (^)())success
+          failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Record
 

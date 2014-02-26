@@ -85,6 +85,11 @@
                                 <action selector="logoutAction:" destination="6JW-F4-FNe" id="wuO-oe-c14"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="更新条款" id="Kp7-Lh-kcZ">
+                            <connections>
+                                <action selector="checkUpdateAction:" destination="6JW-F4-FNe" id="X76-mR-mah"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sB-N0-pU2" userLabel="First Responder" sceneMemberID="firstResponder"/>

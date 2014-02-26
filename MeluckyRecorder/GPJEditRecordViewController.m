@@ -128,7 +128,7 @@
 {
     [self.tableView reloadData];
     if([self.txtViolateTypeNum.text length] > 0) {
-        NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateNumber:self.txtViolateTypeNum.text];
+        NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfViolateTypeNumber:self.txtViolateTypeNum.text];
         if(info) {
             self.txtTypeDetail.text = info[@"ViolateTypeName"];
             self.txtTypeScore.text = [NSString stringWithFormat:@"%@分",info[@"ViolateScores"]];
