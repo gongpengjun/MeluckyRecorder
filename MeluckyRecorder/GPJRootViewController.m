@@ -64,10 +64,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
-    if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] > 0)
-        return 2;
-    else
-        return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -92,6 +89,11 @@
 - (void)batchUploadAction
 {
     NSLog(@"%s,%d",__FUNCTION__,__LINE__);
+    if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] > 0) {
+        [self showAlertWithTitle:@"提示" message:@"没有保存的记录，请点击'新建违章记录'添加"];
+        return;
+    }
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.dimBackground = YES;
     
