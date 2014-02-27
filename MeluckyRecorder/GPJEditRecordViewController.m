@@ -415,8 +415,11 @@
         [self saveAction:tableView];
     }
     
-    if(indexPath.section == 0 || indexPath.section == 1) {
+    if(indexPath.section == 0 ) {
         [self fetchAndShowUserInfo];
+    }
+    
+    if(indexPath.section == 1) {
         [self showTypeInfo];
     }
 }
