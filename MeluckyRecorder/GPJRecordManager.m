@@ -121,10 +121,10 @@
     NSString * targetPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/types.json"];
     NSData *data = [NSJSONSerialization dataWithJSONObject:newTypesDict options:NSJSONWritingPrettyPrinted error:&error];
     if(data && [data writeToFile:targetPath atomically:YES]) {
-        success();
+        if(success) success();
     } else {
         error = [NSError errorWithDomain:@"GPJError" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"save types failed" }];
-        failure(error);
+        if(failure) failure(error);
     }
 }
 
@@ -297,7 +297,7 @@
     else
         parameters = @{@"employeeid": employeeid, @"typenum" : typenum, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
     
-    NSLog(@"%s,%d parameters: %@",__FUNCTION__,__LINE__,parameters);
+    //NSLog(@"%s,%d parameters: %@",__FUNCTION__,__LINE__,parameters);
     
     void (^constructBody)(id <AFMultipartFormData> formData) = ^(id <AFMultipartFormData> formData) {
         // the data size of jpg is much smaller than png (1200x1600:1.5MB(jpg)/3.5MB(png))

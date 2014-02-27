@@ -91,9 +91,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="logoutBtnItem" destination="gLa-pC-HTW" id="yhc-sn-gpN"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sB-N0-pU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

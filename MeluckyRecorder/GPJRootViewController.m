@@ -14,7 +14,6 @@
 #import "GPJRecord.h"
 
 @interface GPJRootViewController () <UIAlertViewDelegate>
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *logoutBtnItem;
 @end
 
 @implementation GPJRootViewController
@@ -47,12 +46,7 @@
     [super viewWillAppear:animated];
     if([[GPJUser sharedUser] isLoggedIn])
     {
-        self.navigationItem.leftBarButtonItem = self.logoutBtnItem;
         self.title = [NSString stringWithFormat:@"操作员: %@", [[GPJUser sharedUser] username]];
-    }
-    else
-    {
-        self.navigationItem.leftBarButtonItem = nil;
     }
     
     [self.tableView reloadData];
