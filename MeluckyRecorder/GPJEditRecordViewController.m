@@ -248,7 +248,7 @@
     
     if(![record isValidForSave])
     {
-        [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章地点、违章照片都不能为空."];
+        [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章照片都不能为空."];
         return;
     }
     
@@ -267,7 +267,7 @@
     
     if(![record isValidForUpload])
     {
-        [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章地点、违章照片都不能为空."];
+        [self showAlertWithTitle:@"错误" message:@"员工号、违章条款、违章照片都不能为空."];
         return;
     }
     

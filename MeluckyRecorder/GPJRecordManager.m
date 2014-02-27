@@ -204,18 +204,28 @@
 {
     NSString* uuid = record.uuid;
     NSString* path = [self folderPathOfRecordUUID:uuid createIfNotExist:NO];
-    //NSLog(@"uuid: %@ path: %@",uuid,path);
+    NSLog(@"uuid: %@ path: %@",uuid,path);
     
     if(!record.imageName)
         record.imageName = @"photo1.jpg";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDictionary* dict = @{
-                               @"uuid"       : record.uuid,
-                               @"employeeid" : record.employeeid,
-                               @"typenum"     : record.typenum,
-                               @"place"      : record.place,
-                               @"imageName"  : record.imageName
-                               };
+        NSDictionary* dict = nil;
+        if([record.place length] > 0)
+            dict = @{
+                     @"uuid"       : record.uuid,
+                     @"employeeid" : record.employeeid,
+                     @"typenum"    : record.typenum,
+                     @"place"      : record.place,
+                     @"imageName"  : record.imageName
+                     };
+        else
+            dict = @{
+                     @"uuid"       : record.uuid,
+                     @"employeeid" : record.employeeid,
+                     @"typenum"    : record.typenum,
+                     @"imageName"  : record.imageName
+                     };
+        
         UIImage* photo1 = record.image;
         
         NSData* data = nil;
@@ -281,7 +291,13 @@
     //NSLog(@"%s,%d manager.responseSerializer.acceptableContentTypes:%@",__FUNCTION__,__LINE__,manager.responseSerializer.acceptableContentTypes);
     
     NSString *url = @"http://api.gongpengjun.com:90/violations/record.php";
-    NSDictionary *parameters = @{@"employeeid": employeeid, @"typenum" : typenum, @"place" : place, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
+    NSDictionary *parameters = nil;
+    if([place length] > 0)
+        parameters = @{@"employeeid": employeeid, @"typenum" : typenum, @"place" : place, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
+    else
+        parameters = @{@"employeeid": employeeid, @"typenum" : typenum, @"operid" : operid, @"mobile" : @(1), @"DeviceID": deviceid};
+    
+    NSLog(@"%s,%d parameters: %@",__FUNCTION__,__LINE__,parameters);
     
     void (^constructBody)(id <AFMultipartFormData> formData) = ^(id <AFMultipartFormData> formData) {
         // the data size of jpg is much smaller than png (1200x1600:1.5MB(jpg)/3.5MB(png))

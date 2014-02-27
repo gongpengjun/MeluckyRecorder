@@ -89,7 +89,7 @@
 - (void)batchUploadAction
 {
     NSLog(@"%s,%d",__FUNCTION__,__LINE__);
-    if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] > 0) {
+    if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] == 0) {
         [self showAlertWithTitle:@"提示" message:@"没有保存的记录，请点击'新建违章记录'添加"];
         return;
     }
@@ -108,11 +108,11 @@
     void (^endBlock)() = ^{
         NSString* message = nil;
         if(succeedCount == total) {
-            message = [NSString stringWithFormat:@"上传完成，全部%d个记录上传成功",total];
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录上传成功。",total];
         } else if (failureCount == total) {
-            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都上传失败，请检查您的无线网络。",total];
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都上传失败。",total];
         } else if (invalidCount == total) {
-            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都是无效的",total];
+            message = [NSString stringWithFormat:@"上传完成，全部%d个记录都是无效的。",total];
         } else {
             message = [NSString stringWithFormat:@"上传完成，%d个成功，%d个失败，%d个无效。",succeedCount,failureCount,invalidCount];
         }
