@@ -64,6 +64,7 @@
     self.userInfoOperation = nil;
 }
 
+#if 0
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if([self.txtEmployeeID.text length] > 0 && !self.userInfoOperation)
@@ -74,17 +75,18 @@
     
     return YES;
 }
+#endif
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if([textField isEqual:self.txtEmployeeID])
     {// Next -> violate type id
-        [self fetchAndShowUserInfo];
+        //[self fetchAndShowUserInfo];
         [self.txtViolateTypeNum becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolateTypeNum])
     {// Next -> violate place
-        [self showTypeInfo];
+        //[self showTypeInfo];
         [self.txtViolatePlace becomeFirstResponder];
     }
     else if([textField isEqual:self.txtViolatePlace])
@@ -97,6 +99,10 @@
     }
     //
     return YES;
+}
+
+- (IBAction)checkUserInfo:(id)sender {
+    [self fetchAndShowUserInfo];
 }
 
 - (void)fetchAndShowUserInfo
@@ -122,6 +128,10 @@
                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
                           }];
     }
+}
+
+- (IBAction)checkTypeInfo:(id)sender {
+    [self showTypeInfo];
 }
 
 - (void)showTypeInfo
@@ -394,10 +404,8 @@
     if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]) {
         [self.txtEmployeeID becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:1]]) {
-        [self fetchAndShowUserInfo];
         [self.txtViolateTypeNum becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:2]]) {
-        [self showTypeInfo];
         [self.txtViolatePlace becomeFirstResponder];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:2]]) {
         [self pickPhotoAction:self.imageView];
@@ -405,6 +413,11 @@
         [self uploadAction:tableView];
     } else if([indexPath isEqual:[NSIndexPath indexPathForRow:1 inSection:3]]) {
         [self saveAction:tableView];
+    }
+    
+    if(indexPath.section == 0 || indexPath.section == 1) {
+        [self fetchAndShowUserInfo];
+        [self showTypeInfo];
     }
 }
 
