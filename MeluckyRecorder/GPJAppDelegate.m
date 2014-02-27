@@ -56,6 +56,8 @@
     [[GPJRecordManager sharedRecordManager] loadViolationTypesDatabase];
     if(![[GPJUser sharedUser] isLoggedIn] ){
         [self showLoginViewAnimated:NO];
+    } else {
+        [self updateTypesDatabase];
     }
 }
 
@@ -73,6 +75,22 @@
 - (void)logoutHandler:(NSNotification *)notification {
     [[GPJUser sharedUser] logout];
     [self showLoginViewAnimated:YES];
+}
+
+- (void)updateTypesDatabase {
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager checkTypesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+        if([responseObject objectForKey:@"error"])
+            return;
+        NSDictionary* newTypesDict = responseObject;
+        NSInteger oldVersion = [manager.typesDict[@"version"] integerValue];
+        NSInteger newVersion = [newTypesDict[@"version"] integerValue];
+        NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+        if(oldVersion < newVersion) {
+            [manager saveTypes:newTypesDict success:nil failure:nil];
+        }
+    } failure:nil];
 }
 
 @end

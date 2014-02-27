@@ -98,10 +98,10 @@
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
     
     NSArray* recordsArray = [[GPJRecordManager sharedRecordManager] savedRecords];
-    NSUInteger total = [recordsArray count];
-    __block NSUInteger succeedCount = 0;
-    __block NSUInteger failureCount = 0;
-    __block NSUInteger invalidCount = 0;
+    int total = [recordsArray count];
+    __block int succeedCount = 0;
+    __block int failureCount = 0;
+    __block int invalidCount = 0;
     
     void (^endBlock)() = ^{
         NSString* message = nil;

@@ -78,7 +78,7 @@
             NSParameterAssert([self.typesDict objectForKey:@"version"]);
             NSParameterAssert([self.typesDict objectForKey:@"types"]);
             NSParameterAssert([self.typesDict[@"types"] count] > 0);
-            NSLog(@"%s,%d violation type version: %@ count: %d",__FUNCTION__,__LINE__,self.typesDict[@"version"],[self.typesDict[@"types"] count]);
+            NSLog(@"%s,%d violation type version: %@ count: %i",__FUNCTION__,__LINE__,self.typesDict[@"version"],[self.typesDict[@"types"] count]);
         }
     });
 }
