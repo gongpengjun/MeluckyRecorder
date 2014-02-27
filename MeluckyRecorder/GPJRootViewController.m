@@ -14,7 +14,7 @@
 #import "GPJRecord.h"
 
 @interface GPJRootViewController () <UIAlertViewDelegate>
-@property (nonatomic, strong) UIBarButtonItem *logoutBtnItem;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *logoutBtnItem;
 @end
 
 @implementation GPJRootViewController
@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.logoutBtnItem = self.navigationItem.leftBarButtonItem;
-    self.navigationItem.leftBarButtonItem = nil;
     self.automaticallyAdjustsScrollViewInsets = NO;
     CGFloat topEdge = CGRectGetHeight(self.navigationController.navigationBar.frame);
     self.tableView.contentInset = UIEdgeInsetsMake(topEdge, 0, 0, 0);
@@ -54,7 +52,7 @@
     }
     else
     {
-        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.leftBarButtonItem = nil;
     }
     
     [self.tableView reloadData];
@@ -88,7 +86,7 @@
 
 - (void)batchUploadAction
 {
-    NSLog(@"%s,%d",__FUNCTION__,__LINE__);
+    //NSLog(@"%s,%d",__FUNCTION__,__LINE__);
     if([[GPJRecordManager sharedRecordManager] countOfSavedRecords] == 0) {
         [self showAlertWithTitle:@"提示" message:@"没有保存的记录，请点击'新建违章记录'添加"];
         return;
@@ -165,7 +163,7 @@
         return;
     }
     
-    NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,sender);
+    //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,sender);
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.dimBackground = YES;
