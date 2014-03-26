@@ -128,6 +128,86 @@
     }
 }
 
+
+#pragma mark - Employee Database
+
+
+- (void)loadEmployeesDatabase;
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError *error = nil;
+        NSString * targetPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/employees.json"];
+        NSString * sourcePath = [[NSBundle mainBundle] pathForResource:@"employees" ofType:@"json"];
+        if(![[NSFileManager defaultManager] fileExistsAtPath:targetPath]) {
+            if(![[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:targetPath error:&error]) {
+                NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+            }
+        }
+        
+        NSData* data = [NSData dataWithContentsOfFile:targetPath options:NSDataReadingMappedIfSafe error:&error];
+        if(!data) {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+        }
+        self.employeesDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if(!self.employeesDict) {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
+        } else {
+            //NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,self.typesDict);
+            NSParameterAssert([self.employeesDict objectForKey:@"version"]);
+            NSParameterAssert([self.employeesDict objectForKey:@"employees"]);
+            NSParameterAssert([self.employeesDict[@"employees"] count] > 0);
+            NSLog(@"%s,%d employees version: %@ count: %i",__FUNCTION__,__LINE__,self.employeesDict[@"version"],[self.employeesDict[@"employees"] count]);
+        }
+    });
+}
+
+- (NSDictionary*)infoOfEmployeeID:(NSString*)idNumber;
+{
+    NSParameterAssert(idNumber);
+    NSParameterAssert(self.employeesDict);
+    NSParameterAssert([self.employeesDict objectForKey:@"employees"]);
+    
+    NSDictionary* info = nil;
+    NSArray* employeesArray = self.employeesDict[@"employees"];
+    for(NSDictionary *employeeInfo in employeesArray) {
+        NSString* idNum = [employeeInfo objectForKey:@"EmployeeID"];
+        if([idNum isEqualToString:idNumber]) {
+            info = employeeInfo;
+            break;
+        }
+    }
+    
+    return info;
+}
+
+- (AFHTTPRequestOperation *)checkEmployeesUpdateWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *urlString = @"http://api.gongpengjun.com:90/violations/employee.php";
+    return [[AFHTTPRequestOperationManager manager] GET:urlString
+                                             parameters:nil
+                                                success:success
+                                                failure:failure];
+}
+
+- (void)saveEmployees:(NSDictionary*)newEmployeesDict
+              success:(void (^)())success
+              failure:(void (^)(NSError *error))failure;
+{
+    self.employeesDict = newEmployeesDict;
+    NSError *error = nil;
+    NSString * targetPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/employees.json"];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:newEmployeesDict options:NSJSONWritingPrettyPrinted error:&error];
+    if(data && [data writeToFile:targetPath atomically:YES]) {
+        if(success) success();
+    } else {
+        error = [NSError errorWithDomain:@"GPJError" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"save employees failed" }];
+        if(failure) failure(error);
+    }
+}
+
+
+
 #pragma mark - Record
 
 - (NSString*)infoPath

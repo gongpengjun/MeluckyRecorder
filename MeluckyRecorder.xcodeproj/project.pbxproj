@@ -35,6 +35,7 @@
 		C460A2F018B635BE00E5DFC6 /* GPJRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C460A2EF18B635BE00E5DFC6 /* GPJRecordManager.m */; };
 		C460A2F518B6394D00E5DFC6 /* GPJRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C460A2F418B6394D00E5DFC6 /* GPJRecord.m */; };
 		C460A2F618B6394D00E5DFC6 /* GPJRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C460A2F418B6394D00E5DFC6 /* GPJRecord.m */; };
+		C4D96E7718E3989400FBDB94 /* employees.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D96E7618E3989400FBDB94 /* employees.json */; };
 		C4E54786189CED190092C122 /* GPJEditRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E54785189CED190092C122 /* GPJEditRecordViewController.m */; };
 		C4E5478E189CF1820092C122 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E54789189CF1820092C122 /* UIImage+Alpha.m */; };
 		C4E5478F189CF1820092C122 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5478B189CF1820092C122 /* UIImage+Resize.m */; };
@@ -86,6 +87,7 @@
 		C460A2EF18B635BE00E5DFC6 /* GPJRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJRecordManager.m; sourceTree = "<group>"; };
 		C460A2F318B6394D00E5DFC6 /* GPJRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJRecord.h; sourceTree = "<group>"; };
 		C460A2F418B6394D00E5DFC6 /* GPJRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJRecord.m; sourceTree = "<group>"; };
+		C4D96E7618E3989400FBDB94 /* employees.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = employees.json; sourceTree = "<group>"; };
 		C4E54784189CED190092C122 /* GPJEditRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJEditRecordViewController.h; sourceTree = "<group>"; };
 		C4E54785189CED190092C122 /* GPJEditRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJEditRecordViewController.m; sourceTree = "<group>"; };
 		C4E54788189CF1820092C122 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				C4E54787189CF1820092C122 /* UIImage+Resize */,
 				C4203BCC189C7A8000C8711A /* Images.xcassets */,
 				C4203BE9189C867500C8711A /* types.json */,
+				C4D96E7618E3989400FBDB94 /* employees.json */,
 				C4203BBB189C7A8000C8711A /* Supporting Files */,
 			);
 			path = MeluckyRecorder;
@@ -327,6 +330,7 @@
 				C4203BCD189C7A8000C8711A /* Images.xcassets in Resources */,
 				C4203BBF189C7A8000C8711A /* InfoPlist.strings in Resources */,
 				C4203BC8189C7A8000C8711A /* Main.storyboard in Resources */,
+				C4D96E7718E3989400FBDB94 /* employees.json in Resources */,
 				C4203BEA189C867500C8711A /* types.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

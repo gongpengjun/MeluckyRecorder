@@ -54,10 +54,11 @@
 - (void)startLogin
 {
     [[GPJRecordManager sharedRecordManager] loadViolationTypesDatabase];
+    [[GPJRecordManager sharedRecordManager] loadEmployeesDatabase];
     if(![[GPJUser sharedUser] isLoggedIn] ){
         [self showLoginViewAnimated:NO];
     } else {
-        [self updateTypesDatabase];
+        [self updateDatabase];
     }
 }
 
@@ -91,6 +92,27 @@
             [manager saveTypes:newTypesDict success:nil failure:nil];
         }
     } failure:nil];
+}
+
+- (void)updateEmployeesDatabase {
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager checkEmployeesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+        if([responseObject objectForKey:@"error"])
+            return;
+        NSDictionary* newEmployeesDict = responseObject;
+        NSInteger oldVersion = [manager.employeesDict[@"version"] integerValue];
+        NSInteger newVersion = [newEmployeesDict[@"version"] integerValue];
+        NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+        if(oldVersion < newVersion) {
+            [manager saveEmployees:newEmployeesDict success:nil failure:nil];
+        }
+    } failure:nil];
+}
+
+- (void)updateDatabase {
+    [self updateTypesDatabase];
+    [self updateEmployeesDatabase];
 }
 
 @end

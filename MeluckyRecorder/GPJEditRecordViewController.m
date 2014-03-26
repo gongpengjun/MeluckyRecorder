@@ -102,7 +102,7 @@
 }
 
 - (IBAction)checkUserInfo:(id)sender {
-    [self fetchAndShowUserInfo];
+    [self showUserInfo];
 }
 
 - (void)fetchAndShowUserInfo
@@ -127,6 +127,23 @@
                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                               NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,error);
                           }];
+    }
+}
+
+- (void)showUserInfo
+{
+    [self.tableView reloadData];
+    if([self.txtEmployeeID.text length] > 0) {
+        NSDictionary * info = [[GPJRecordManager sharedRecordManager] infoOfEmployeeID:self.txtEmployeeID.text];
+        if(info) {
+            self.txtUserName.text = info[@"UserName"];
+            self.txtDeptName.text = info[@"DeptName"];
+            NSLog(@"%s,%d EmployeeID: %@ UserName: %@ DeptName: %@",__FUNCTION__,__LINE__,info[@"EmployeeID"],info[@"UserName"],info[@"DeptName"]);
+        } else {
+            NSLog(@"%s,%d %@",__FUNCTION__,__LINE__,info[@"error"][@"prompt"]);
+            self.txtUserName.text = @"该用户不存在";
+            self.txtDeptName.text = @"该用户不存在";
+        }
     }
 }
 

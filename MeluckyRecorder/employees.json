@@ -1,0 +1,21 @@
+{
+  "version" : "0",
+  "employees" : [
+    {
+      "DeptName" : "安保部",
+      "MlkUserID" : "1001",
+      "EmployeeID" : "123",
+      "UserName" : "张三",
+      "Integral" : "12",
+      "DeptID" : "1001"
+    },
+    {
+      "DeptName" : "财务部",
+      "MlkUserID" : "1002",
+      "EmployeeID" : "456",
+      "UserName" : "李四",
+      "Integral" : "12",
+      "DeptID" : "1002"
+    }
+  ]
+}

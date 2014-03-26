@@ -13,6 +13,7 @@
 @interface GPJRecordManager : NSObject
 
 @property (nonatomic, strong) NSDictionary * typesDict;
+@property (nonatomic, strong) NSDictionary * employeesDict;
 
 + (GPJRecordManager*)sharedRecordManager;
 
@@ -34,6 +35,19 @@
 - (void)saveTypes:(NSDictionary*)typeDict
           success:(void (^)())success
           failure:(void (^)(NSError *error))failure;
+
+#pragma mark - Employee Database
+
+- (void)loadEmployeesDatabase;
+
+- (NSDictionary*)infoOfEmployeeID:(NSString*)idNumber;
+
+- (AFHTTPRequestOperation *)checkEmployeesUpdateWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)saveEmployees:(NSDictionary*)newEmployeesDict
+              success:(void (^)())success
+              failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Record
 
