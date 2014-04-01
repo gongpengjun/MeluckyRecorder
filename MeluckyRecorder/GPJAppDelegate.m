@@ -78,41 +78,62 @@
     [self showLoginViewAnimated:YES];
 }
 
-- (void)updateTypesDatabase {
+- (AFHTTPRequestOperation *)updateTypesDatabase {
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
-    [manager checkTypesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
-        if([responseObject objectForKey:@"error"])
-            return;
-        NSDictionary* newTypesDict = responseObject;
-        NSInteger oldVersion = [manager.typesDict[@"version"] integerValue];
-        NSInteger newVersion = [newTypesDict[@"version"] integerValue];
-        NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
-        if(oldVersion < newVersion) {
-            [manager saveTypes:newTypesDict success:nil failure:nil];
-        }
+    return [manager checkTypesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self handleEmployeeUpdateResponse:responseObject];
     } failure:nil];
 }
 
-- (void)updateEmployeesDatabase {
+- (AFHTTPRequestOperation *)updateEmployeesDatabase {
     GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
-    [manager checkEmployeesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
-        if([responseObject objectForKey:@"error"])
-            return;
-        NSDictionary* newEmployeesDict = responseObject;
-        NSInteger oldVersion = [manager.employeesDict[@"version"] integerValue];
-        NSInteger newVersion = [newEmployeesDict[@"version"] integerValue];
-        NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
-        if(oldVersion < newVersion) {
-            [manager saveEmployees:newEmployeesDict success:nil failure:nil];
-        }
+    return [manager checkEmployeesUpdateWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self handleEmployeeUpdateResponse:responseObject];
     } failure:nil];
+}
+
+- (void)handleTypeUpdateResponse:(id)responseObject
+{
+    //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+    if([responseObject objectForKey:@"error"])
+        return;
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    NSDictionary* newTypesDict = responseObject;
+    NSInteger oldVersion = [manager.typesDict[@"version"] integerValue];
+    NSInteger newVersion = [newTypesDict[@"version"] integerValue];
+    NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+    if(oldVersion < newVersion) {
+        [manager saveTypes:newTypesDict success:nil failure:nil];
+    }
+}
+
+- (void)handleEmployeeUpdateResponse:(id)responseObject
+{
+    //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+    if([responseObject objectForKey:@"error"])
+        return;
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    NSDictionary* newEmployeesDict = responseObject;
+    NSInteger oldVersion = [manager.employeesDict[@"version"] integerValue];
+    NSInteger newVersion = [newEmployeesDict[@"version"] integerValue];
+    NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+    if(oldVersion < newVersion) {
+        [manager saveEmployees:newEmployeesDict success:nil failure:nil];
+    }
 }
 
 - (void)updateDatabase {
-    [self updateTypesDatabase];
-    [self updateEmployeesDatabase];
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    [manager checkUpdateWithTypeSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+                            [self handleTypeUpdateResponse:responseObject];
+                        }
+                            typeFailure:nil
+                        employeeSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            [self handleEmployeeUpdateResponse:responseObject];
+                        }
+                        employeeFailure:nil completionBlock:^(NSArray *operations) {
+                            NSLog(@"%s,%d all done",__FUNCTION__,__LINE__);
+                        }];
 }
 
 @end

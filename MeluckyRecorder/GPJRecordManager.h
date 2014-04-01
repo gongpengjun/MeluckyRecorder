@@ -49,6 +49,14 @@
               success:(void (^)())success
               failure:(void (^)(NSError *error))failure;
 
+#pragma mark - All-in-one
+
+- (NSArray *)checkUpdateWithTypeSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))typeSuccess
+                            typeFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))typeFailure
+                        employeeSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))employeeSuccess
+                        employeeFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))employeeFailure
+                        completionBlock:(void (^)(NSArray *operations))completionBlock;
+
 #pragma mark - Record
 
 - (NSUInteger)countOfSavedRecords;

@@ -206,7 +206,37 @@
     }
 }
 
+#pragma mark - All-in-one
 
+- (NSArray *)checkUpdateWithTypeSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))typeSuccess
+                            typeFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))typeFailure
+                        employeeSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))employeeSuccess
+                        employeeFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))employeeFailure
+                        completionBlock:(void (^)(NSArray *operations))completionBlock
+{
+    NSMutableArray *opertionsArray = [NSMutableArray array];
+    
+    NSString *urlString = @"http://api.gongpengjun.com:90/violations/types.php";
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:typeSuccess failure:typeFailure];
+    [opertionsArray addObject:operation];
+    
+    urlString = @"http://api.gongpengjun.com:90/violations/employee.php";
+    request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:employeeSuccess failure:employeeFailure];
+    [opertionsArray addObject:operation];
+    
+    NSArray *batchOperations = [AFURLConnectionOperation batchOfRequestOperations:opertionsArray
+                                                                    progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+                                                                        NSLog(@"%s,%d %i/%i",__FUNCTION__,__LINE__,numberOfFinishedOperations,totalNumberOfOperations);
+                                                                    } completionBlock:completionBlock];
+    [[NSOperationQueue mainQueue] addOperations:batchOperations waitUntilFinished:NO];
+    return batchOperations;
+}
 
 #pragma mark - Record
 
