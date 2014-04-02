@@ -238,6 +238,49 @@
     return batchOperations;
 }
 
+- (void)updateDatabase {
+    [self checkUpdateWithTypeSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+                        [self handleTypeUpdateResponse:responseObject];
+                    }
+                         typeFailure:nil
+                     employeeSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         [self handleEmployeeUpdateResponse:responseObject];
+                     }
+                     employeeFailure:nil completionBlock:^(NSArray *operations) {
+                         NSLog(@"%s,%d all done",__FUNCTION__,__LINE__);
+                     }];
+}
+
+- (void)handleTypeUpdateResponse:(id)responseObject
+{
+    //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+    if([responseObject objectForKey:@"error"])
+        return;
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    NSDictionary* newTypesDict = responseObject;
+    NSInteger oldVersion = [manager.typesDict[@"version"] integerValue];
+    NSInteger newVersion = [newTypesDict[@"version"] integerValue];
+    NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+    if(oldVersion < newVersion) {
+        [manager saveTypes:newTypesDict success:nil failure:nil];
+    }
+}
+
+- (void)handleEmployeeUpdateResponse:(id)responseObject
+{
+    //NSLog(@"%s,%d JSON: %@",__FUNCTION__,__LINE__,responseObject);
+    if([responseObject objectForKey:@"error"])
+        return;
+    GPJRecordManager* manager = [GPJRecordManager sharedRecordManager];
+    NSDictionary* newEmployeesDict = responseObject;
+    NSInteger oldVersion = [manager.employeesDict[@"version"] integerValue];
+    NSInteger newVersion = [newEmployeesDict[@"version"] integerValue];
+    NSLog(@"%s,%d oldVersion: %i, newVersion: %i",__FUNCTION__,__LINE__,oldVersion,newVersion);
+    if(oldVersion < newVersion) {
+        [manager saveEmployees:newEmployeesDict success:nil failure:nil];
+    }
+}
+
 #pragma mark - Record
 
 - (NSString*)infoPath
